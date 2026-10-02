@@ -546,11 +546,13 @@ a.ml-card{transition:background-color .25s ease}
           <div class="ml-hx__info" aria-live="polite">
             <b class="ml-hx__name" data-ml-hero-name>Portofoliu</b>
             <span class="ml-hx__meta"><span data-ml-hero-meta></span><span class="ml-hx__tag" data-ml-hero-tag></span></span>
+            <span class="ml-hx__did" data-ml-hero-did></span>
           </div>
           <a class="ml-hx__go" href="#portofoliu" data-ml-hero-go aria-label="Vezi portofoliul"><span class="ml-hx__go-t">Vezi site-ul</span><svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
         </div>
         <div class="ml-hx__device">
           <div class="ml-hx__laptop">
+            <span class="ml-hx__res" data-ml-hero-res hidden></span>
             <div class="ml-hx__lid">
               <a class="ml-hx__stage" href="#portofoliu" data-ml-hero-stage data-ml-cursor="Vezi site-ul" tabindex="-1" aria-hidden="true">
                 <div class="ml-hx__slide is-on"><div class="ml-shot-box ml-hx__desk"><div class="ml-ph">Captură desktop</div></div></div>
@@ -611,16 +613,23 @@ a.ml-card{transition:background-color .25s ease}
 
 .ml-hero__bento{grid-auto-rows:212px}
 .ml-hx{min-height:520px;padding:8px;color:var(--ml-ink)}
-.ml-hx__head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 12px 16px 16px}
+.ml-hx__head{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 12px 12px 16px}
 .ml-hx__name{display:block;font-size:20px;font-weight:600;line-height:1.25;letter-spacing:-.02em}
 .ml-hx__meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;margin-top:4px;font-size:14px;color:var(--ml-mute)}
 .ml-hx__tag{padding:2px 9px;border-radius:999px;background:#fff;font-size:12px;font-weight:500;color:var(--ml-ink);box-shadow:0 0 0 1px rgba(28,26,69,.08)}
 .ml-hx__tag:empty{display:none}
+/* ce am făcut: un rând scurt, cu o bifă */
+.ml-hx__did{display:flex;align-items:flex-start;gap:6px;margin-top:8px;font-size:14px;line-height:1.35;color:var(--ml-ink)}
+.ml-hx__did::before{content:"";flex-shrink:0;width:16px;height:16px;margin-top:1px;border-radius:50%;background:var(--ml-ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2 7 10.5l4.5-5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/11px no-repeat}
+.ml-hx__did:empty{display:none}
+/* rezultatul: etichetă lime lipită pe colțul laptopului */
+.ml-hx__res{position:absolute;top:-14px;right:-10px;z-index:5;padding:8px 14px;border-radius:999px;background:var(--ml-lime);color:var(--ml-ink);font-size:14px;font-weight:600;line-height:1.2;white-space:nowrap;box-shadow:0 10px 24px -10px rgba(28,26,69,.45);transform:rotate(2deg)}
+.ml-hx__res[hidden]{display:none}
 .ml-hx__go{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px 0 16px;border-radius:999px;background:#fff;font-size:14px;font-weight:600;color:var(--ml-ink);text-decoration:none;box-shadow:0 1px 3px rgba(28,26,69,.1);transition:background-color .25s ease,color .25s ease}
 .ml-hx__go .ml-arrow{width:14px;height:14px}
 /* machetă MacBook (culoarea Midnight) desenată din CSS: ramă neagră subțire cu contur Midnight și notch mic, ecran 16:10
    (ca capturile și clipurile), colțurile de sus rotunjite; baza foarte subțire, cu ~20% mai lată decât capacul, cu adâncitura de deschidere */
-.ml-hx__device{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:22px 0 14px}  /* fără panou separat: laptopul stă direct pe card */
+.ml-hx__device{position:relative;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:12px 0 10px}  /* fără panou separat: laptopul stă direct pe card */
 .ml-hx__laptop{position:relative;width:82%}
 /* umbra de pe „masă”, sub bază */
 .ml-hx__laptop::after{content:"";position:absolute;left:-4%;right:-4%;bottom:-16px;height:22px;z-index:-1;background:radial-gradient(closest-side,rgba(28,26,69,.28),rgba(28,26,69,0));pointer-events:none}
@@ -642,7 +651,7 @@ a.ml-card{transition:background-color .25s ease}
 @keyframes mlPan{0%,22%{object-position:50% 0}90%,100%{object-position:50% 100%}}
 /* punctele, ca la postările lungi de pe Instagram: activul colorat, 3 puncte mari într-o fereastră care se mută,
    spre margini câte unul mic și unul foarte mic, restul ascunse */
-.ml-hx__dots{display:flex;justify-content:center;align-items:center;margin-top:22px;height:24px}
+.ml-hx__dots{display:flex;justify-content:center;align-items:center;margin-top:18px;height:24px}
 .ml-hx__dots[hidden]{display:none}
 .ml-hx__dot{position:relative;flex-shrink:0;width:13px;height:24px;transition:width .3s var(--ml-ease),opacity .3s ease}
 .ml-hx__dot::before{content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;margin:-3.5px 0 0 -3.5px;border-radius:50%;background:rgba(28,26,69,.24);transform:scale(var(--s,1));transition:transform .3s var(--ml-ease),background-color .3s ease}
@@ -693,7 +702,9 @@ a.ml-card{transition:background-color .25s ease}
   .ml-hx__name{font-size:18px}
   .ml-hx__go{width:40px;height:40px;padding:0;justify-content:center}
   .ml-hx__go-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-  .ml-hx__device{padding:22px 0 10px}
+  .ml-hx__device{padding:16px 0 8px}
+  .ml-hx__did{font-size:13px}
+  .ml-hx__res{top:-12px;right:-6px;padding:6px 11px;font-size:12px}
   .ml-hx__laptop{width:90%}
   .ml-hx__dots{margin-top:16px}
   .ml-hx__lid{padding:4px 4px 5px;border-radius:9px 9px 2px 2px;box-shadow:inset 0 0 0 1px #343C4E,0 20px 36px -24px rgba(17,20,30,.6)}
@@ -731,6 +742,8 @@ a.ml-card{transition:background-color .25s ease}
     var nameEl = root.querySelector('[data-ml-hero-name]');
     var metaEl = root.querySelector('[data-ml-hero-meta]');
     var tagEl = root.querySelector('[data-ml-hero-tag]');
+    var didEl = root.querySelector('[data-ml-hero-did]');
+    var resEl = root.querySelector('[data-ml-hero-res]');
     var lid = root.querySelector('.ml-hx__lid');
     var dotsEl = root.querySelector('[data-ml-hero-dots]');
     var n = list.length, cur = 0, timer = null, paused = false;
@@ -839,6 +852,9 @@ a.ml-card{transition:background-color .25s ease}
       nameEl.textContent = p.nume || '';
       metaEl.textContent = p.domeniu || '';
       tagEl.textContent = p.tip || '';
+      didEl.textContent = p.facut || '';
+      resEl.textContent = p.rezultat || '';
+      resEl.hidden = !p.rezultat;
       [go, stage].forEach(function (a) {
         a.href = p.url || '#portofoliu';
         if (p.url) { a.target = '_blank'; a.rel = 'noopener'; } else a.removeAttribute('target');
@@ -882,14 +898,15 @@ a.ml-card{transition:background-color .25s ease}
     function lockInfo() {
       info.setAttribute('aria-live', 'off'); // fără anunțuri pentru cititoarele de ecran cât măsurăm
       info.style.minHeight = '';
-      var max = 0, keepN = nameEl.textContent, keepM = metaEl.textContent, keepT = tagEl.textContent;
+      var max = 0, keepN = nameEl.textContent, keepM = metaEl.textContent, keepT = tagEl.textContent, keepD = didEl.textContent;
       list.forEach(function (p) {
         nameEl.textContent = p.nume || '';
         metaEl.textContent = p.domeniu || '';
         tagEl.textContent = p.tip || '';
+        didEl.textContent = p.facut || '';
         max = Math.max(max, info.getBoundingClientRect().height);
       });
-      nameEl.textContent = keepN; metaEl.textContent = keepM; tagEl.textContent = keepT;
+      nameEl.textContent = keepN; metaEl.textContent = keepM; tagEl.textContent = keepT; didEl.textContent = keepD;
       info.style.minHeight = Math.ceil(max) + 'px';
       info.setAttribute('aria-live', 'polite');
     }
@@ -1124,6 +1141,8 @@ a.ml-card{transition:background-color .25s ease}
      mobil    – link spre captura de mobil (ideal: toată pagina, lățime 390 px)
      video    – opțional: clip scurt (MP4, fără sunet) cu primul ecran; în primul ecran (blocul 02) rulează în locul capturii
      poster   – opțional: imaginea afișată până pornește clipul
+     facut    – opțional: ce am făcut, scurt (ex. „Text, design și Google Ads”); apare în primul ecran sub nume
+     rezultat – opțional: o cifră reală (ex. „×3 venit lunar în 8 luni”); apare ca etichetă lime pe laptop
   Primul proiect apare și în primul ecran (blocul 02). Pune primele proiectele cele mai frumoase.
   Grila alternează automat carduri mari, late și mici. Capturile lungi se derulează la hover.
 -->
@@ -1205,7 +1224,8 @@ a.ml-card{transition:background-color .25s ease}
 window.ML_PROIECTE = [
   // capturile din folderul portofoliu/ merg în previzualizare; în Tilda pui în locul lor linkurile de pe static.tildacdn.com
   { nume: 'Dent Expert · Implant diaspora', domeniu: 'Clinică stomatologică, Buzău', tip: 'Landing page', url: 'https://implant.dentexpertbuzau.ro/oferte/diaspora', desktop: 'portofoliu/dentexpert-diaspora-desktop.webp', mobil: 'portofoliu/dentexpert-diaspora-mobil.webp',
-    video: 'portofoliu/dentexpert-diaspora-video.mp4', poster: 'portofoliu/dentexpert-diaspora-poster.webp' },
+    video: 'portofoliu/dentexpert-diaspora-video.mp4', poster: 'portofoliu/dentexpert-diaspora-poster.webp',
+    facut: 'Site, landing-uri pentru servicii și oferte, Google Ads', rezultat: '×3 venit lunar în 8 luni' },
   { nume: 'K&O Rechtsanwälte', domeniu: 'Avocați, Germania', tip: 'Landing page', url: 'https://ko-legal.eu/', desktop: 'portofoliu/kolegal-desktop.webp', mobil: 'portofoliu/kolegal-mobil.webp' },
   { nume: 'Impladent', domeniu: 'Implanturi dentare, București', tip: 'Landing page', url: 'https://moreleads.ro/impladent', desktop: 'portofoliu/impladent-desktop.webp', mobil: 'portofoliu/impladent-mobil.webp' },
   { nume: 'Fabrica Tur · Kumánia', domeniu: 'Agenție de turism, Moldova', tip: 'Landing page', url: 'https://statiunibalneare.md/articole/kumania', desktop: 'portofoliu/kumania-desktop.webp', mobil: 'portofoliu/kumania-mobil.webp',
