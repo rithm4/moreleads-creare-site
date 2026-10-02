@@ -28,9 +28,16 @@
           </div>
           <a class="ml-hx__go" href="#portofoliu" data-ml-hero-go aria-label="Vezi portofoliul"><svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
         </div>
-        <a class="ml-hx__stage" href="#portofoliu" data-ml-hero-stage data-ml-cursor="Vezi site-ul" tabindex="-1" aria-hidden="true">
-          <div class="ml-hx__slide is-on"><div class="ml-shot-box ml-hx__desk"><div class="ml-ph">Captură desktop</div></div></div>
-        </a>
+        <div class="ml-hx__device">
+          <div class="ml-hx__laptop">
+            <div class="ml-hx__lid">
+              <a class="ml-hx__stage" href="#portofoliu" data-ml-hero-stage data-ml-cursor="Vezi site-ul" tabindex="-1" aria-hidden="true">
+                <div class="ml-hx__slide is-on"><div class="ml-shot-box ml-hx__desk"><div class="ml-ph">Captură desktop</div></div></div>
+              </a>
+            </div>
+            <span class="ml-hx__base" aria-hidden="true"></span>
+          </div>
+        </div>
         <div class="ml-hx__dots" data-ml-hero-dots role="group" aria-label="Alege proiectul" hidden></div>
       </div>
     </div>
@@ -87,7 +94,14 @@
 .ml-hx__name{display:block;margin-top:4px;font-size:20px;font-weight:600;letter-spacing:-.02em}
 .ml-hx__go{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:background-color .25s ease,color .25s ease}
 .ml-hx__meta{display:block;margin-top:2px;font-size:14px;color:var(--ml-mute)}
-.ml-hx__stage{position:relative;display:block;flex:1;min-height:0;border-radius:var(--ml-r-in);overflow:hidden;touch-action:pan-y}
+/* machetă de laptop desenată din CSS: ramă închisă, cameră, ecran 16:10 (ca capturile și clipurile), bază argintie */
+.ml-hx__device{position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:12px 0 68px;border-radius:var(--ml-r-in);background:radial-gradient(62% 58% at 50% 44%,rgba(201,184,255,.6) 0%,rgba(201,184,255,0) 72%)}
+.ml-hx__laptop{position:relative;width:86%}
+.ml-hx__lid{position:relative;padding:12px 12px 14px;border-radius:16px 16px 6px 6px;background:linear-gradient(180deg,#2A2763 0%,#1C1A45 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 28px 50px -28px rgba(28,26,69,.6)}
+.ml-hx__lid::before{content:"";position:absolute;top:4px;left:50%;width:5px;height:5px;margin-left:-2.5px;border-radius:50%;background:#4B4887}
+.ml-hx__stage{position:relative;display:block;aspect-ratio:16 / 10;border-radius:4px;overflow:hidden;background:#fff;touch-action:pan-y}
+.ml-hx__base{position:relative;display:block;width:114%;height:14px;margin-left:-7%;border-radius:2px 2px 14px 14px;background:linear-gradient(180deg,#E9E8F1 0%,#C9C7D8 70%,#AFADC2 100%);box-shadow:0 14px 22px -14px rgba(28,26,69,.55)}
+.ml-hx__base::before{content:"";position:absolute;top:0;left:50%;width:16%;height:5px;transform:translateX(-50%);border-radius:0 0 6px 6px;background:#B9B7CA}
 /* slide-urile stau unul peste altul și se schimbă cu o trecere lină */
 .ml-hx__slide{position:absolute;inset:0;opacity:0;transition:opacity .7s var(--ml-ease);pointer-events:none}
 .ml-hx__slide.is-on{opacity:1}
@@ -95,7 +109,7 @@
 .ml-hx__mob{position:absolute;right:20px;bottom:20px;width:23%;aspect-ratio:9 / 19.5;border:4px solid var(--ml-card);border-radius:16px;box-shadow:0 20px 40px -20px rgba(17,17,19,.45)}
 /* cu clip: ocupă tot cardul, fără telefonul-machetă (ar acoperi video-ul din pagina clientului) */
 .ml-hx__slide.has-video .ml-hx__mob{display:none}
-.ml-hx__video{object-fit:contain;object-position:50% 0;background:#fff}  /* clipul se vede întreg: pe telefon zona e mai înaltă decât clipul, iar dedesubt rămâne alb */
+.ml-hx__video{object-fit:contain;object-position:50% 0;background:#fff}  /* clipul se vede întreg, fără margini tăiate */
 /* captura stă întâi câteva secunde sus (antetul și titlul site-ului), apoi coboară lent și urcă înapoi */
 .ml-hx__slide.is-on .ml-shot.is-tall{animation:mlPan 14s ease-in-out 1.2s infinite alternate}
 @keyframes mlPan{0%,22%{object-position:50% 0}90%,100%{object-position:50% 100%}}
@@ -131,7 +145,6 @@
   .ml-hero__text{padding:8px 8px 20px}
   .ml-hero__t{max-width:16ch}
   .ml-hx{min-height:0}
-  .ml-hx__stage{flex:none;aspect-ratio:16 / 10}
 }
 @media (max-width:640px){
   .ml-hero{padding:24px 0 20px}
@@ -142,7 +155,12 @@
   .ml-hero__cta .ml-btn{width:100%}
   .ml-hero__bento{grid-auto-rows:auto}
   .ml-hx__head{padding:12px 12px 14px}
-  .ml-hx__stage{aspect-ratio:6 / 5}
+  .ml-hx__device{padding:8px 0 64px}
+  .ml-hx__laptop{width:92%}
+  .ml-hx__lid{padding:7px 7px 9px;border-radius:11px 11px 4px 4px}
+  .ml-hx__lid::before{top:2px;width:3px;height:3px;margin-left:-1.5px}
+  .ml-hx__base{width:108%;margin-left:-4%;height:9px;border-radius:2px 2px 10px 10px}
+  .ml-hx__base::before{height:3px}
   .ml-hx__mob{right:12px;bottom:12px;border-width:3px;border-radius:12px}
   .ml-hx__dots{bottom:16px}
   .ml-hx__meta{font-size:13px}
