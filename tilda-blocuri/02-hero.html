@@ -87,7 +87,7 @@
 .ml-hx__name{display:block;margin-top:4px;font-size:20px;font-weight:600;letter-spacing:-.02em}
 .ml-hx__go{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:background-color .25s ease,color .25s ease}
 .ml-hx__meta{display:block;margin-top:2px;font-size:14px;color:var(--ml-mute)}
-.ml-hx__stage{position:relative;display:block;flex:1;min-height:0;border-radius:var(--ml-r-in);overflow:hidden}
+.ml-hx__stage{position:relative;display:block;flex:1;min-height:0;border-radius:var(--ml-r-in);overflow:hidden;touch-action:pan-y}
 /* slide-urile stau unul peste altul și se schimbă cu o trecere lină */
 .ml-hx__slide{position:absolute;inset:0;opacity:0;transition:opacity .7s var(--ml-ease);pointer-events:none}
 .ml-hx__slide.is-on{opacity:1}
@@ -142,7 +142,7 @@
   .ml-hero__cta .ml-btn{width:100%}
   .ml-hero__bento{grid-auto-rows:auto}
   .ml-hx__head{padding:12px 12px 14px}
-  .ml-hx__stage{aspect-ratio:16 / 11}
+  .ml-hx__stage{aspect-ratio:6 / 5}
   .ml-hx__mob{right:12px;bottom:12px;border-width:3px;border-radius:12px}
   .ml-hx__dots{bottom:16px}
   .ml-hx__meta{font-size:13px}
@@ -282,6 +282,22 @@
     root.addEventListener('focusin', function () { paused = true; clearTimeout(timer); });
     root.addEventListener('focusout', function () { paused = false; schedule(); });
     document.addEventListener('visibilitychange', schedule);
+
+    // glisare cu degetul pe captură: stânga = următorul proiect, dreapta = cel anterior
+    var tx = 0, ty = 0, swiped = false;
+    stage.addEventListener('touchstart', function (e) {
+      if (n < 2) return;
+      tx = e.touches[0].clientX; ty = e.touches[0].clientY; swiped = false;
+      clearTimeout(timer);
+    }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      if (n < 2) return;
+      var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) { swiped = true; show(cur + (dx < 0 ? 1 : -1)); }
+      else schedule();
+    }, { passive: true });
+    // după o glisare nu deschidem site-ul proiectului
+    stage.addEventListener('click', function (e) { if (swiped) { e.preventDefault(); swiped = false; } });
 
     show(0);
     function loadRest() { later.forEach(function (f) { f(); }); later = []; }

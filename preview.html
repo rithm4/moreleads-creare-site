@@ -609,7 +609,7 @@ a.ml-card{transition:background-color .25s ease}
 .ml-hx__name{display:block;margin-top:4px;font-size:20px;font-weight:600;letter-spacing:-.02em}
 .ml-hx__go{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:background-color .25s ease,color .25s ease}
 .ml-hx__meta{display:block;margin-top:2px;font-size:14px;color:var(--ml-mute)}
-.ml-hx__stage{position:relative;display:block;flex:1;min-height:0;border-radius:var(--ml-r-in);overflow:hidden}
+.ml-hx__stage{position:relative;display:block;flex:1;min-height:0;border-radius:var(--ml-r-in);overflow:hidden;touch-action:pan-y}
 /* slide-urile stau unul peste altul și se schimbă cu o trecere lină */
 .ml-hx__slide{position:absolute;inset:0;opacity:0;transition:opacity .7s var(--ml-ease);pointer-events:none}
 .ml-hx__slide.is-on{opacity:1}
@@ -664,7 +664,7 @@ a.ml-card{transition:background-color .25s ease}
   .ml-hero__cta .ml-btn{width:100%}
   .ml-hero__bento{grid-auto-rows:auto}
   .ml-hx__head{padding:12px 12px 14px}
-  .ml-hx__stage{aspect-ratio:16 / 11}
+  .ml-hx__stage{aspect-ratio:6 / 5}
   .ml-hx__mob{right:12px;bottom:12px;border-width:3px;border-radius:12px}
   .ml-hx__dots{bottom:16px}
   .ml-hx__meta{font-size:13px}
@@ -805,6 +805,22 @@ a.ml-card{transition:background-color .25s ease}
     root.addEventListener('focusout', function () { paused = false; schedule(); });
     document.addEventListener('visibilitychange', schedule);
 
+    // glisare cu degetul pe captură: stânga = următorul proiect, dreapta = cel anterior
+    var tx = 0, ty = 0, swiped = false;
+    stage.addEventListener('touchstart', function (e) {
+      if (n < 2) return;
+      tx = e.touches[0].clientX; ty = e.touches[0].clientY; swiped = false;
+      clearTimeout(timer);
+    }, { passive: true });
+    stage.addEventListener('touchend', function (e) {
+      if (n < 2) return;
+      var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) { swiped = true; show(cur + (dx < 0 ? 1 : -1)); }
+      else schedule();
+    }, { passive: true });
+    // după o glisare nu deschidem site-ul proiectului
+    stage.addEventListener('click', function (e) { if (swiped) { e.preventDefault(); swiped = false; } });
+
     show(0);
     function loadRest() { later.forEach(function (f) { f(); }); later = []; }
     if (document.readyState === 'complete') setTimeout(loadRest, 300);
@@ -821,45 +837,47 @@ a.ml-card{transition:background-color .25s ease}
 <div class="t-rec"><div class="t123">
 <!--
   MoreLeads · Bloc 03 · CLIENȚI
-  Logo-urile sunt cele de pe pagina veche. Ca să adaugi unul: copiază un rând <li> în AMBELE liste.
+  Logo-urile sunt color, cu marginile goale tăiate (folderul clienti/). La mutarea în Tilda: urcă fișierele și înlocuiește căile.
+  Fiecare <li> are --w/--h = mărimea optică (logo-urile late mai lungi, cele pătrate mai înalte), ca toate să pară la fel de mari.
+  Ca să adaugi unul: copiază un rând <li> în AMBELE liste; --h ≈ 46 / raport^0,45 și --w = --h × raport (raport = lățime/înălțime).
 -->
 <section class="ml ml-cl" aria-labelledby="ml-cl-t">
   <div class="ml-wrap">
     <div class="ml-card ml-cl__card" data-ml-reveal>
-      <h2 class="ml-card__label ml-cl__t" id="ml-cl-t">Au lucrat cu noi: firme din Chișinău, București, Buzău și Germania</h2><!-- DE CONFIRMAT: orașele -->
+      <h2 class="ml-card__label ml-cl__t" id="ml-cl-t">Au crescut cu noi: firme din Chișinău, București, Buzău și Germania</h2><!-- DE CONFIRMAT: orașele -->
       <div class="ml-cl__marquee">
         <div class="ml-cl__track">
           <ul class="ml-cl__list">
-            <li><img src="https://static.tildacdn.one/tild3638-3861-4138-b362-306165656361/logo_steel_V1.png" alt="Steel" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3862-3361-4237-a433-376265623463/Logo_ActivClean.png" alt="ActivClean" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3365-6363-4366-a539-323063383031/fitmami.png" alt="FitMami" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3037-3763-4663-b138-346539376665/Logo_DRblue.png" alt="DRblue" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3064-6133-4863-b463-376665336561/news_3622106Hungaros.jpg" alt="Hungaros" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3931-3934-4436-b931-653032393366/Asset-1.png" alt="Logo client" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3664-6665-4666-b638-356131626639/Logo_500x500.jpg" alt="Logo client" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3537-3732-4161-b637-383838386662/4_1.png" alt="Logo client" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3936-6266-4439-b238-663165663835/2020-06-07.jpg" alt="Logo client" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild6137-6362-4666-a533-613532353162/52307317.jpg" alt="Logo client" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3939-3065-4462-b664-373937333037/Bx3Z8c3iQc6j4DsTtY8o.png" alt="Logo client" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild6665-3331-4061-b236-363462383639/76305532.jpg" alt="Logo client" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3330-6263-4936-a438-326133653166/_.png" alt="Logo client" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild6266-6562-4531-a661-313764333837/cropped-cropped-crop.png" alt="Logo client" loading="lazy"></li>
+            <li style="--w:68;--h:34"><img src="clienti/steel-consulting.webp" alt="Steel Consulting" width="136" height="68" loading="lazy" decoding="async"></li>
+            <li style="--w:69;--h:33"><img src="clienti/activclean.webp" alt="ActivClean" width="138" height="66" loading="lazy" decoding="async"></li>
+            <li style="--w:43;--h:48"><img src="clienti/fitmami.webp" alt="FitMami" width="86" height="96" loading="lazy" decoding="async"></li>
+            <li style="--w:66;--h:34"><img src="clienti/documente-romanesti.webp" alt="Documente Românești" width="132" height="68" loading="lazy" decoding="async"></li>
+            <li style="--w:70;--h:33"><img src="clienti/hungarospa.webp" alt="Hungarospa Thermal Hotel" width="140" height="66" loading="lazy" decoding="async"></li>
+            <li style="--w:44;--h:48"><img src="clienti/color-stories.webp" alt="Color Stories" width="88" height="96" loading="lazy" decoding="async"></li>
+            <li style="--w:94;--h:25"><img src="clienti/taxreturn.webp" alt="TaxReturn" width="188" height="50" loading="lazy" decoding="async"></li>
+            <li style="--w:87;--h:27"><img src="clienti/eximol.webp" alt="Eximol" width="174" height="54" loading="lazy" decoding="async"></li>
+            <li style="--w:42;--h:49"><img src="clienti/kirman.webp" alt="Kirman" width="84" height="98" loading="lazy" decoding="async"></li>
+            <li style="--w:58;--h:38"><img src="clienti/fabrica-tur.webp" alt="Fabrica Tur" width="116" height="76" loading="lazy" decoding="async"></li>
+            <li style="--w:109;--h:23"><img src="clienti/promed.webp" alt="Promed" width="218" height="46" loading="lazy" decoding="async"></li>
+            <li style="--w:39;--h:54"><img src="clienti/mega-sport.webp" alt="Mega Sport" width="78" height="108" loading="lazy" decoding="async"></li>
+            <li style="--w:46;--h:46"><img src="clienti/alverstur.webp" alt="Alverstur" width="92" height="92" loading="lazy" decoding="async"></li>
+            <li style="--w:100;--h:24"><img src="clienti/dentexpert.webp" alt="Dent Expert Trend" width="200" height="48" loading="lazy" decoding="async"></li>
           </ul>
           <ul class="ml-cl__list" aria-hidden="true">
-            <li><img src="https://static.tildacdn.one/tild3638-3861-4138-b362-306165656361/logo_steel_V1.png" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3862-3361-4237-a433-376265623463/Logo_ActivClean.png" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3365-6363-4366-a539-323063383031/fitmami.png" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3037-3763-4663-b138-346539376665/Logo_DRblue.png" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3064-6133-4863-b463-376665336561/news_3622106Hungaros.jpg" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3931-3934-4436-b931-653032393366/Asset-1.png" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3664-6665-4666-b638-356131626639/Logo_500x500.jpg" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3537-3732-4161-b637-383838386662/4_1.png" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3936-6266-4439-b238-663165663835/2020-06-07.jpg" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild6137-6362-4666-a533-613532353162/52307317.jpg" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3939-3065-4462-b664-373937333037/Bx3Z8c3iQc6j4DsTtY8o.png" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild6665-3331-4061-b236-363462383639/76305532.jpg" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild3330-6263-4936-a438-326133653166/_.png" alt="" loading="lazy"></li>
-            <li><img src="https://static.tildacdn.one/tild6266-6562-4531-a661-313764333837/cropped-cropped-crop.png" alt="" loading="lazy"></li>
+            <li style="--w:68;--h:34"><img src="clienti/steel-consulting.webp" alt="" width="136" height="68" loading="lazy" decoding="async"></li>
+            <li style="--w:69;--h:33"><img src="clienti/activclean.webp" alt="" width="138" height="66" loading="lazy" decoding="async"></li>
+            <li style="--w:43;--h:48"><img src="clienti/fitmami.webp" alt="" width="86" height="96" loading="lazy" decoding="async"></li>
+            <li style="--w:66;--h:34"><img src="clienti/documente-romanesti.webp" alt="" width="132" height="68" loading="lazy" decoding="async"></li>
+            <li style="--w:70;--h:33"><img src="clienti/hungarospa.webp" alt="" width="140" height="66" loading="lazy" decoding="async"></li>
+            <li style="--w:44;--h:48"><img src="clienti/color-stories.webp" alt="" width="88" height="96" loading="lazy" decoding="async"></li>
+            <li style="--w:94;--h:25"><img src="clienti/taxreturn.webp" alt="" width="188" height="50" loading="lazy" decoding="async"></li>
+            <li style="--w:87;--h:27"><img src="clienti/eximol.webp" alt="" width="174" height="54" loading="lazy" decoding="async"></li>
+            <li style="--w:42;--h:49"><img src="clienti/kirman.webp" alt="" width="84" height="98" loading="lazy" decoding="async"></li>
+            <li style="--w:58;--h:38"><img src="clienti/fabrica-tur.webp" alt="" width="116" height="76" loading="lazy" decoding="async"></li>
+            <li style="--w:109;--h:23"><img src="clienti/promed.webp" alt="" width="218" height="46" loading="lazy" decoding="async"></li>
+            <li style="--w:39;--h:54"><img src="clienti/mega-sport.webp" alt="" width="78" height="108" loading="lazy" decoding="async"></li>
+            <li style="--w:46;--h:46"><img src="clienti/alverstur.webp" alt="" width="92" height="92" loading="lazy" decoding="async"></li>
+            <li style="--w:100;--h:24"><img src="clienti/dentexpert.webp" alt="" width="200" height="48" loading="lazy" decoding="async"></li>
           </ul>
         </div>
       </div>
@@ -874,16 +892,15 @@ a.ml-card{transition:background-color .25s ease}
 .ml-cl__marquee{flex:1;min-width:0;overflow:hidden;background:var(--ml-card);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .ml-cl__track{display:flex;width:max-content;background:var(--ml-card);animation:mlLogos 50s linear infinite}
 .ml-cl__marquee:hover .ml-cl__track{animation-play-state:paused}
-.ml-cl__list{display:flex;align-items:center}
-.ml-cl__list li{flex-shrink:0;height:56px;width:150px;margin-right:16px;display:flex;align-items:center;justify-content:center}
-.ml-cl__list img{max-height:44px;max-width:120px;width:auto;height:auto;object-fit:contain;filter:grayscale(1) brightness(1.05) contrast(1.1);mix-blend-mode:multiply;opacity:.72;transition:opacity .25s ease,filter .25s ease}
-.ml-cl__list li:hover img{filter:none;opacity:1}
+.ml-cl__list{display:flex;align-items:center;--k:1.3}
+.ml-cl__list li{flex-shrink:0;display:flex;align-items:center;justify-content:center;height:72px;padding:0 30px}
+.ml-cl__list img{display:block;width:calc(var(--w) * var(--k) * 1px);height:calc(var(--h) * var(--k) * 1px);max-width:none;object-fit:contain}
 @keyframes mlLogos{to{transform:translateX(-50%)}}
 @media (max-width:640px){
   .ml-cl__card{flex-direction:column;align-items:stretch;gap:12px;padding:18px 0}
   .ml-cl__t{width:auto;padding:0 18px}
-  .ml-cl__list li{width:112px;height:48px;margin-right:8px}
-  .ml-cl__list img{max-height:36px;max-width:92px}
+  .ml-cl__list{--k:1}
+  .ml-cl__list li{height:60px;padding:0 18px}
 }
 @media (prefers-reduced-motion:reduce){
   .ml-cl__marquee{overflow-x:auto}
