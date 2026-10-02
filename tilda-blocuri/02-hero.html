@@ -1,6 +1,6 @@
 <!--
   MoreLeads · Bloc 02 · PRIMUL ECRAN
-  Cardul mare e un slider cu primele proiecte din lista din blocul 05 (ML_PROIECTE) care au captură, max. 8.
+  Cardul mare e un slider cu primele proiecte din lista din blocul 05 (ML_PROIECTE) care au captură, max. 10.
   Se schimbă singur (6,5 s; 10 s la cele cu clip), se oprește când treci cu mouse-ul. Nu trebuie editat aici.
 -->
 <section class="ml ml-hero" aria-labelledby="ml-hero-t">
@@ -165,7 +165,7 @@
     var root = document.querySelector('[data-ml-hero]');
     if (!root || root.__mlHero) return;
     root.__mlHero = true;
-    var list = (window.ML_PROIECTE || []).filter(function (p) { return p.desktop || p.video; }).slice(0, 8);
+    var list = (window.ML_PROIECTE || []).filter(function (p) { return p.desktop || p.video; }).slice(0, 10);
     if (!list.length) return;
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var stage = root.querySelector('[data-ml-hero-stage]');
