@@ -11,25 +11,33 @@
 
     <div class="ml-bento" data-ml-stagger style="--ml-st:90ms">
       <article class="ml-card ml-card--lav ml-c4 ml-rs__main">
-        <div class="ml-rs__case">
-          <div class="ml-rs__sum">
+        <div class="ml-rs__top">
+          <div>
             <span class="ml-card__label">Studiu de caz · Clinică stomatologică, Buzău</span>
-            <h3 class="ml-rs__t">Dent Expert Trend: venitul lunar al clinicii s-a triplat în 8 luni</h3>
-            <dl class="ml-rs__nums">
-              <div><dt>Venit lunar la început</dt><dd>~200.000 lei</dd></div>
-              <div><dt>Venit lunar după 8 luni</dt><dd>600.000+ lei <span class="ml-rs__x3">×3</span></dd></div>
-            </dl>
-            <p class="ml-rs__why"><b>De ce a funcționat.</b> Nu am făcut o singură pagină, ci tot drumul pacientului: de la reclamă până la apel. Cine caută un implant ajunge pe pagina despre implanturi, cine vine din diaspora ajunge pe oferta pentru diaspora. Omul găsește imediat ce caută, așa că sună. Fiecare cerere e numărată, deci știm ce campanie și ce pagină aduc pacienți.</p>
-            <a class="ml-rs__link" href="https://implant.dentexpertbuzau.ro/oferte/diaspora" target="_blank" rel="noopener">Vezi oferta pentru diaspora <svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
+            <h3 class="ml-rs__t">Dent Expert Trend: venitul lunar s-a triplat în 8 luni</h3>
           </div>
-          <div class="ml-rs__did">
-            <p class="ml-rs__did-t">Ce am făcut, pachetul complet</p>
-            <ol class="ml-rs__steps">
-              <li><b>Site-ul general pentru implanturi</b><span>Pagina principală a clinicii pentru implanturi: tratamentul, medicul, etapele și formularul de programare.</span></li>
-              <li><b>Landing-uri pentru celelalte servicii</b><span>Fiecare serviciu are pagina lui, cu textul și formularul gândite pentru acel tratament.</span></li>
-              <li><b>Landing-uri pentru oferte</b><span>Pagini separate pentru fiecare ofertă, de exemplu pentru pacienții din diaspora care vin în țară pentru tratament.</span></li>
-              <li><b>Campaniile de reclamă</b><span>Setate și administrate de noi. Fiecare campanie trimite oamenii pe pagina potrivită, nu pe prima pagină a site-ului.</span></li>
-            </ol>
+          <a class="ml-rs__link" href="https://implant.dentexpertbuzau.ro/oferte/diaspora" target="_blank" rel="noopener">Vezi pagina pentru diaspora <svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
+        </div>
+        <div class="ml-rs__boxes">
+          <div class="ml-rs__box">
+            <span class="ml-rs__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 2.5 8 12 13l9.5-5L12 3Z"/><path d="m2.5 12.5 9.5 5 9.5-5"/><path d="m2.5 16.5 9.5 5 9.5-5"/></svg></span>
+            <p class="ml-rs__bt"><span>01</span> Paginile</p>
+            <ul class="ml-rs__ul">
+              <li>Site pentru implanturi</li>
+              <li>Landing pentru fiecare serviciu</li>
+              <li>Landing pentru fiecare ofertă, ex. diaspora</li>
+            </ul>
+          </div>
+          <div class="ml-rs__box">
+            <span class="ml-rs__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>
+            <p class="ml-rs__bt"><span>02</span> Reclama</p>
+            <p class="ml-rs__bx">Campanii setate și administrate de noi. Fiecare reclamă duce pe pagina potrivită.</p>
+          </div>
+          <div class="ml-rs__box ml-rs__box--ink">
+            <span class="ml-rs__ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+            <p class="ml-rs__bt"><span>03</span> Rezultatul</p>
+            <p class="ml-rs__big">×3</p>
+            <p class="ml-rs__bx">Venit lunar: de la ~200.000 la 600.000+ lei, în 8 luni</p>
           </div>
         </div>
       </article>
@@ -71,38 +79,37 @@
 
 <style>
 .ml-rs{background:var(--ml-bg)}
-.ml-rs__main{padding:36px}
-.ml-rs__case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:start}
-.ml-rs__sum{display:flex;flex-direction:column;align-items:flex-start}
-.ml-rs__t{margin:14px 0 0;font-size:clamp(26px,2.6vw,36px);line-height:1.12;font-weight:600;letter-spacing:-.02em;color:var(--ml-ink);text-wrap:balance}
-.ml-rs__nums{margin:24px 0 0;display:grid;grid-template-columns:repeat(2,auto);gap:12px 36px}
-.ml-rs__nums div{margin:0}
-.ml-rs__nums dt{font-size:13px;color:var(--ml-lav-ink)}
-.ml-rs__nums dd{margin:4px 0 0;font-size:clamp(26px,2.4vw,34px);font-weight:600;letter-spacing:-.02em;line-height:1.1;color:var(--ml-ink);font-variant-numeric:tabular-nums}
-.ml-rs__x3{display:inline-block;margin-left:10px;padding:3px 9px;border-radius:999px;background:var(--ml-ink);color:#fff;font-size:14px;letter-spacing:0;vertical-align:middle}
-.ml-rs__why{margin-top:24px;font-size:16px;line-height:1.55;color:var(--ml-text);max-width:520px}
-.ml-rs__why b{color:var(--ml-ink);font-weight:600}
-.ml-rs__link{margin-top:18px;display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:var(--ml-ink);text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
+.ml-rs__main{padding:32px}
+.ml-rs__top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 32px;flex-wrap:wrap}
+.ml-rs__t{margin:12px 0 0;font-size:clamp(24px,2.4vw,34px);line-height:1.15;font-weight:600;letter-spacing:-.02em;color:var(--ml-ink);text-wrap:balance}
+.ml-rs__link{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:var(--ml-ink);text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px;white-space:nowrap}
 .ml-rs__link .ml-arrow{width:14px;height:14px}
-/* pașii: panou de sticlă */
-.ml-rs__did{padding:24px 26px;border-radius:var(--ml-r-in);background:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 0 0 1px rgba(255,255,255,.4)}
-.ml-rs__did-t{font-size:13px;font-weight:600;color:var(--ml-lav-ink)}
-.ml-rs__steps{margin:16px 0 0;padding:0;list-style:none;counter-reset:mlst;display:grid;gap:18px}
-.ml-rs__steps li{position:relative;margin:0;padding:0 0 0 44px;counter-increment:mlst}
-.ml-rs__steps li::before{content:counter(mlst,decimal-leading-zero);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--ml-ink);color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center}
-.ml-rs__steps b{display:block;font-size:16px;font-weight:600;line-height:1.3;color:var(--ml-ink)}
-.ml-rs__steps span{display:block;margin-top:4px;font-size:15px;line-height:1.5;color:var(--ml-text)}
+/* trei carduri: paginile → reclama → rezultatul */
+.ml-rs__boxes{margin-top:28px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ml-rs__box{display:flex;flex-direction:column;padding:24px;border-radius:var(--ml-r-in);background:rgba(255,255,255,.6);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),inset 0 0 0 1px rgba(255,255,255,.45)}
+.ml-rs__ic{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:14px;background:var(--ml-ink);color:#fff}
+.ml-rs__ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ml-rs__bt{margin-top:20px;font-size:19px;font-weight:600;color:var(--ml-ink)}
+.ml-rs__bt span{margin-right:6px;font-size:13px;font-weight:600;color:var(--ml-lav-ink);font-variant-numeric:tabular-nums}
+.ml-rs__ul{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:8px}
+.ml-rs__ul li{position:relative;margin:0;padding-left:18px;font-size:15px;line-height:1.4;color:var(--ml-text)}
+.ml-rs__ul li::before{content:"";position:absolute;left:2px;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--ml-accent)}
+.ml-rs__bx{margin-top:10px;font-size:15px;line-height:1.5;color:var(--ml-text)}
+.ml-rs__box--ink{background:var(--ml-ink);box-shadow:none}
+.ml-rs__box--ink .ml-rs__ic{background:var(--ml-lime,#D8F76B);color:var(--ml-ink)}
+.ml-rs__box--ink .ml-rs__bt{color:#fff}
+.ml-rs__box--ink .ml-rs__bt span{color:var(--ml-lav)}
+.ml-rs__box--ink .ml-rs__bx{margin-top:6px;color:var(--ml-on-ink)}
+.ml-rs__big{margin-top:auto;padding-top:14px;font-size:clamp(56px,5vw,76px);line-height:.95;font-weight:600;letter-spacing:-.03em;color:#fff}
 .ml-rs .ml-card__big{font-size:clamp(48px,4.8vw,72px)}
 
-@media (max-width:1024px){
-  .ml-rs__case{grid-template-columns:minmax(0,1fr);gap:28px}
-  .ml-rs__why{max-width:none}
+@media (max-width:860px){
+  .ml-rs__boxes{grid-template-columns:minmax(0,1fr)}
+  .ml-rs__big{margin-top:6px}
 }
 @media (max-width:640px){
   .ml-rs__main{padding:22px}
-  .ml-rs__nums{grid-template-columns:minmax(0,1fr);gap:14px}
-  .ml-rs__did{padding:20px 18px}
-  .ml-rs__steps li{padding-left:40px}
+  .ml-rs__box{padding:20px}
   .ml-rs .ml-card:not(.ml-rs__main){min-height:190px}
 }
 </style>
