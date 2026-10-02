@@ -1,0 +1,66 @@
+<!--
+  MoreLeads · Bloc 12 · CINE LUCREAZĂ LA SITE-UL TĂU
+  O persoană cu nume și poză reală convinge clienții mici mai mult decât „echipa noastră”.
+  ✏️ De completat: numele, rolul și poza (linkul din Tilda). Dacă sunteți mai mulți, adaugă un <li> pentru fiecare.
+  Până pui poza, cardul arată un fundal hașurat, ca în machetă.
+-->
+<section class="ml ml-team ml-sec" aria-labelledby="ml-team-t">
+  <div class="ml-wrap">
+    <div class="ml-bento ml-team__grid" data-ml-stagger style="--ml-st:110ms">
+      <article class="ml-card ml-c2 ml-r2 ml-team__main">
+        <span class="ml-card__label">Cine lucrează la site-ul tău</span>
+        <div class="ml-card__foot">
+          <h2 class="ml-team__t" id="ml-team-t">Vorbești direct cu cel care îți face site-ul.</h2>
+          <p class="ml-card__text ml-team__lead">MoreLeads e o agenție mică din Chișinău. Fondatorul discută cu tine la început, scrie textele și urmărește rezultatele după lansare. Fără manageri de cont între tine și cel care lucrează. Din 2015 am făcut peste 120 de site-uri și campanii pentru firme din Moldova și România.</p><!-- DE CONFIRMAT: numărul -->
+        </div>
+      </article>
+
+      <figure class="ml-card ml-r2 ml-team__person">
+        <div class="ml-shot-box ml-team__photo" data-ml-clip>
+          <!-- ✏️ pune poza: <img class="ml-shot" src="https://static.tildacdn.com/.../nume.jpg" alt="" loading="lazy"> -->
+          <div class="ml-ph">Poză reală, nu de stoc</div>
+        </div>
+        <figcaption>
+          <b>Nume Prenume</b><!-- DE CONFIRMAT -->
+          <span>Fondator. Discuția, textele, reclama și rezultatele.</span>
+        </figcaption>
+      </figure>
+
+      <div class="ml-card ml-card--soft">
+        <span class="ml-card__label">Cum ne găsești</span>
+        <div class="ml-card__foot">
+          <p class="ml-card__title">Pe WhatsApp, în aceeași zi lucrătoare</p><!-- DE CONFIRMAT: timpul de răspuns -->
+          <p class="ml-card__text">Luni–vineri, 9:00–18:00. Întrebările scurte primesc răspuns în câteva ore, nu în câteva zile.</p>
+        </div>
+      </div>
+
+      <div class="ml-card ml-card--lime">
+        <span class="ml-card__label">Din 2015</span>
+        <div class="ml-card__foot">
+          <p class="ml-card__big ml-team__big" data-ml-count="120" data-ml-suffix="+">120+</p><!-- DE CONFIRMAT -->
+          <p class="ml-card__text">site-uri și campanii, în Moldova, România și alte 3 țări</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.ml-team{background:var(--ml-bg)}
+.ml-team__grid{grid-auto-rows:minmax(228px,auto)}
+.ml-team__main{padding:32px}
+.ml-team__t{max-width:16ch;font-size:clamp(30px,3.4vw,46px);font-weight:600;line-height:1.08;letter-spacing:-.035em;color:var(--ml-ink);text-wrap:balance}
+.ml-team__lead{margin-top:18px;max-width:520px;font-size:16px}
+.ml-team__person{padding:8px}
+.ml-team__photo{flex:1;min-height:0}
+.ml-team__person figcaption{padding:14px 10px 6px}
+.ml-team__person b{display:block;font-size:17px;font-weight:600;color:var(--ml-ink)}
+.ml-team__person span{display:block;margin-top:2px;font-size:14px;color:var(--ml-mute)}
+.ml-team__big{font-size:clamp(44px,4.6vw,64px)}
+@media (max-width:1024px){.ml-team__main{grid-row:auto;min-height:300px}}
+@media (max-width:640px){
+  .ml-team__main{padding:24px}
+  .ml-team__photo{flex:none;aspect-ratio:4 / 5}
+  .ml-team .ml-card:not(.ml-team__main):not(.ml-team__person){min-height:160px}
+}
+</style>

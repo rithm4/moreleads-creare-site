@@ -1,0 +1,109 @@
+<!--
+  MoreLeads · Bloc 15 · CONTACT + FOOTER
+-->
+<section class="ml ml-ct ml-sec" id="contact" aria-labelledby="ml-ct-t">
+  <div class="ml-wrap">
+    <div class="ml-bento ml-ct__bento" data-ml-stagger style="--ml-st:100ms">
+      <article class="ml-card ml-card--lav ml-c2 ml-r2 ml-ct__main">
+        <span class="ml-card__label">Primul pas</span>
+        <div class="ml-card__foot">
+          <h2 class="ml-ct__t" id="ml-ct-t" data-ml-split style="--ml-st:50ms">Spune-ne ce vinzi. Îți spunem ce site îți trebuie.</h2>
+          <p class="ml-card__text ml-ct__lead">Discutăm 20 de minute despre afacerea ta, iar în 48 de ore primești în scris schița, prețul fix și termenul. Nu te obligi la nimic.</p>
+          <div class="ml-ct__btns">
+            <a class="ml-btn ml-btn--accent" href="#popup:schita" data-ml-cta="final">
+              Cere oferta gratuită
+              <svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+            </a>
+            <a class="ml-btn ml-ct__wa" href="https://wa.me/37378000525?text=Bun%C4%83!%20Vreau%20o%20schi%C8%9B%C4%83%20gratuit%C4%83%20pentru%20site." target="_blank" rel="noopener" data-ml-cta="final">Scrie-ne pe WhatsApp</a>
+          </div>
+        </div>
+      </article>
+
+      <a class="ml-card ml-card--ink ml-c2 ml-ct__phone" href="tel:+37378000525" data-ml-cta="final-telefon">
+        <span class="ml-card__label">Sună-ne</span>
+        <span class="ml-ct__tel ml-num" data-ml-split="chars" style="--ml-st:28ms">+373 78 000 525</span>
+      </a>
+
+      <a class="ml-card ml-ct__mail" href="mailto:partners@moreleads.ro">
+        <span class="ml-card__label">Email</span><!-- DE CONFIRMAT: adresa, pe .md? -->
+        <div class="ml-card__foot"><p class="ml-ct__mailtext">partners@<br>moreleads.ro</p></div>
+      </a>
+
+      <div class="ml-card ml-card--soft">
+        <span class="ml-card__label">Ne găsești și pe</span>
+        <ul class="ml-card__foot ml-ct__social">
+          <li><a href="https://www.facebook.com/MoreLeadsMoldova" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/moreleadsro/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://wa.me/37378000525" target="_blank" rel="noopener" data-ml-cta="footer">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="ml-ft">
+      <div class="ml-ft__row">
+        <a class="ml-ft__logo" href="#top" aria-label="MoreLeads, înapoi sus">
+          <svg viewBox="0 0 503 514" aria-hidden="true">
+            <defs>
+              <radialGradient id="mlLogoFtL" cx=".6" cy=".6" r=".65">
+            <stop offset="0" stop-color="#E0CFFF"/><stop offset=".38" stop-color="#B08AFF"/><stop offset=".78" stop-color="#8650F5"/><stop offset="1" stop-color="#7643EC"/>
+          </radialGradient>
+              <linearGradient id="mlLogoFtR" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#25225C"/><stop offset="1" stop-color="#1B1945"/>
+              </linearGradient>
+            </defs>
+            <path fill="url(#mlLogoFtL)" d="M113 185.6A251.5 179 0 0 0 230.5 513.4L230.5 54 141 92 141 366.2A176 85 0 0 1 113 247.6Z"/>
+            <path fill="url(#mlLogoFtR)" d="M390 185.6A251.5 179 0 0 1 272.5 513.4L272.5 37 362 0 362 366.2A176 85 0 0 0 390 247.6Z"/>
+          </svg>
+          MoreLeads
+        </a>
+        <p>MoreLeads SRL · Chișinău · Luni–vineri, 9:00–18:00. <span class="ml-nw">Site-uri</span>, <span class="ml-nw">landing page-uri</span> și campanii de publicitate.</p><!-- DE CONFIRMAT: denumirea, IDNO, programul -->
+        <div class="ml-ft__legal">
+          <span>© 2026 MoreLeads</span>
+          <a href="/politica-de-confitentialitate">Politica de confidențialitate</a>
+          <a href="/termeni-conditii">Termeni și condiții</a>
+        </div>
+      </div>
+      <p class="ml-ft__mega" data-ml-split="chars" style="--ml-st:45ms" aria-hidden="true">MoreLeads</p>
+    </footer>
+  </div>
+</section>
+
+<style>
+.ml-ct{background:var(--ml-bg);padding-bottom:0}
+.ml-ct__main{padding:32px}
+.ml-ct__t{max-width:15ch;font-size:clamp(34px,3.9vw,56px);font-weight:600;line-height:1.08;letter-spacing:-.045em;color:var(--ml-ink);text-wrap:balance}
+.ml-ct__lead{margin-top:22px;max-width:440px;font-size:16px}
+.ml-ct__btns{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
+.ml-ct__wa{border:1px solid rgba(28,26,69,.3);color:var(--ml-ink)}
+.ml-ct__wa:hover{border-color:var(--ml-ink);background:rgba(255,255,255,.35)}
+.ml-ct__phone{justify-content:space-between}
+.ml-ct__tel{font-size:clamp(40px,4.6vw,70px);font-weight:500;line-height:1;letter-spacing:-.05em;color:#fff;white-space:nowrap}
+.ml-ct__mailtext{font-size:20px;font-weight:600;line-height:1.25;letter-spacing:-.01em;color:var(--ml-ink);word-break:break-all}
+.ml-ct__social{display:flex;flex-direction:column;gap:0;font-size:17px;font-weight:500;color:var(--ml-ink)}
+.ml-ct__social a{display:inline-block;padding:8px 0}
+@media (hover:hover) and (pointer:fine){
+  .ml-ct__phone:hover{background:var(--ml-ink-2)}
+  .ml-ct__mail:hover{background:#EDEDF1}
+  .ml-ct__social a:hover{color:var(--ml-accent)}
+}
+
+.ml-ft{padding:40px 8px 0}
+.ml-ft__row{display:flex;justify-content:space-between;align-items:center;gap:16px 32px;flex-wrap:wrap;font-size:14px;color:var(--ml-mute)}
+.ml-ft__logo{display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:600;letter-spacing:-.02em;color:var(--ml-ink)}
+.ml-ft__logo svg{height:22px;width:auto}
+.ml-ft__legal{display:flex;flex-wrap:wrap;align-items:center;gap:0 24px}
+.ml-ft__legal a{display:inline-block;padding:11px 0}
+.ml-ft__legal a:hover{color:var(--ml-ink)}
+.ml-ft__mega{margin:28px 0 0;font-size:clamp(60px,16.8vw,240px);font-weight:600;line-height:.8;letter-spacing:-.065em;color:#F0F0F3;white-space:nowrap;overflow:hidden;user-select:none}
+
+@media (max-width:1024px){.ml-ct__main{grid-row:auto;min-height:360px}}
+@media (max-width:640px){
+  .ml-ct__main{padding:24px;min-height:420px}
+  .ml-ct__btns .ml-btn{width:100%}
+  .ml-ct__phone{min-height:160px}
+  .ml-ct__tel{font-size:clamp(30px,10vw,38px)}
+  .ml-ct .ml-card:not(.ml-ct__main):not(.ml-ct__phone){min-height:150px}
+  .ml-ft{padding:28px 8px calc(96px + env(safe-area-inset-bottom))}
+  .ml-ft__row{flex-direction:column;align-items:flex-start}
+}
+</style>

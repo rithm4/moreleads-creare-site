@@ -1,0 +1,106 @@
+<!--
+  MoreLeads · Bloc 13 · RECENZII VIDEO
+  Videourile sunt cele 3 de pe pagina veche (Kinescope), în aceeași ordine ca acolo.
+  Pornesc fără sunet când ajung pe ecran; la click pornesc de la început, cu sunet.
+-->
+<section class="ml ml-ts ml-sec" id="recenzii" aria-labelledby="ml-ts-t">
+  <div class="ml-wrap">
+    <div class="ml-head">
+      <h2 class="ml-h2" id="ml-ts-t" data-ml-split>Clienții noștri, cu numele lor</h2>
+      <p data-ml-reveal style="--d:150ms">Proprietari de afaceri din Moldova și România despre colaborarea cu noi.</p>
+    </div>
+    <div class="ml-ts__row" data-ml-stagger style="--ml-st:110ms">
+      <figure class="ml-card ml-vid">
+        <div class="ml-vid__frame">
+          <video src="https://kinescope.io/fhovyGqAAsXd1CZz1SPj2U/1080p#t=0.1" playsinline muted loop preload="metadata"></video>
+          <button class="ml-vid__btn" type="button" aria-label="Pornește cu sunet recenzia video: Mihaela Zahiu">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z"/></svg>
+          </button>
+        </div>
+        <figcaption><div><b>Mihaela Zahiu</b><span>Dent Expert Trend, Buzău · Site + Google Ads</span></div><p>„Venitul clinicii s-a triplat în 8 luni.”</p></figcaption><!-- DE CONFIRMAT: firma, citatul -->
+      </figure>
+      <figure class="ml-card ml-vid">
+        <div class="ml-vid__frame">
+          <video src="https://kinescope.io/f9wJgd7GLUW4eE9qEDBDfG/1080p#t=0.1" playsinline muted loop preload="metadata"></video>
+          <button class="ml-vid__btn" type="button" aria-label="Pornește cu sunet recenzia video: Ion Leahu">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z"/></svg>
+          </button>
+        </div>
+        <figcaption><div><b>Ion Leahu</b><span>Chișinău · Landing + Google Ads</span></div><p>„Cererile au început să vină din prima săptămână.”</p></figcaption><!-- DE CONFIRMAT: firma, pachetul, citatul -->
+      </figure>
+      <figure class="ml-card ml-vid">
+        <div class="ml-vid__frame">
+          <video src="https://kinescope.io/wzPmConzTbD1FSDgFTUwuR/1080p#t=0.1" playsinline muted loop preload="metadata"></video>
+          <button class="ml-vid__btn" type="button" aria-label="Pornește cu sunet recenzia video: Rafaela Medveșan">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7-4.5z"/></svg>
+          </button>
+        </div>
+        <figcaption><div><b>Rafaela Medveșan</b><span>București · Site de prezentare</span></div><p>„Am primit exact ce era în schiță, la termen.”</p></figcaption><!-- DE CONFIRMAT: firma, pachetul, citatul -->
+      </figure>
+    </div>
+  </div>
+</section>
+
+<style>
+.ml-ts{background:var(--ml-bg)}
+.ml-ts__row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--ml-gap)}
+.ml-vid{padding:8px}
+.ml-vid__frame{position:relative;aspect-ratio:4 / 5;overflow:hidden;border-radius:var(--ml-r-in);background:var(--ml-ink)}
+.ml-vid__frame video{width:100%;height:100%;object-fit:cover}
+.ml-vid .ml-vid__btn{position:absolute;left:14px;bottom:14px;width:52px;height:52px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:transform .2s var(--ml-ease),opacity .2s ease}
+.ml-vid .ml-vid__btn:active{transform:scale(.95)}
+.ml-vid__btn svg{width:16px;height:16px;margin-left:2px;fill:var(--ml-ink)}
+.ml-vid.is-playing .ml-vid__btn{opacity:0;pointer-events:none}
+.ml-vid figcaption{display:grid;gap:8px;padding:14px 10px 6px}
+.ml-vid figcaption b{display:block;font-size:16px;font-weight:600;color:var(--ml-ink)}
+.ml-vid figcaption span{display:block;margin-top:2px;font-size:14px;color:var(--ml-mute)}
+.ml-vid figcaption p{font-size:15px;line-height:1.45;color:var(--ml-text);text-wrap:pretty}
+@media (hover:hover) and (pointer:fine){.ml-vid .ml-vid__btn:hover{transform:scale(1.06)}}
+@media (max-width:640px){
+  .ml-ts__row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:var(--ml-gap);margin:0 -12px;padding:0 12px;scroll-padding-inline:12px;scrollbar-width:none}
+  .ml-ts__row::-webkit-scrollbar{display:none}
+  .ml-vid{flex:0 0 78%;scroll-snap-align:start}
+  .ml-vid__frame{aspect-ratio:9 / 14}
+}
+</style>
+<script>
+(function () {
+  var root = document.getElementById('recenzii');
+  if (!root) return;
+  var items = root.querySelectorAll('.ml-vid');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function reset(item) {
+    var v = item.querySelector('video');
+    v.muted = true; v.loop = true; v.controls = false;
+    item.classList.remove('is-playing');
+  }
+
+  Array.prototype.forEach.call(items, function (item) {
+    var v = item.querySelector('video');
+    var btn = item.querySelector('.ml-vid__btn');
+    btn.addEventListener('click', function () {
+      Array.prototype.forEach.call(items, function (other) { if (other !== item) reset(other); });
+      v.currentTime = 0; v.muted = false; v.loop = false; v.controls = true;
+      item.classList.add('is-playing');
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+      if (window.mlTrack) window.mlTrack('ml_video_play', { ml_loc: btn.getAttribute('aria-label') });
+    });
+    v.addEventListener('ended', function () { reset(item); });
+  });
+
+  // Previzualizare fără sunet doar cât timp videoul e pe ecran
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var v = en.target;
+        if (!v.muted) return;
+        if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.35 });
+    Array.prototype.forEach.call(root.querySelectorAll('video'), function (v) { io.observe(v); });
+  }
+})();
+</script>

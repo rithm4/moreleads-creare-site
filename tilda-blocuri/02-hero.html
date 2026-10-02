@@ -1,0 +1,294 @@
+<!--
+  MoreLeads · Bloc 02 · PRIMUL ECRAN
+  Cardul mare e un slider cu primele proiecte din lista din blocul 05 (ML_PROIECTE) care au captură, max. 8.
+  Se schimbă singur (6,5 s; 10 s la cele cu clip), se oprește când treci cu mouse-ul. Nu trebuie editat aici.
+-->
+<section class="ml ml-hero" aria-labelledby="ml-hero-t">
+  <div class="ml-wrap">
+    <div class="ml-hero__top">
+      <div class="ml-hero__text">
+        <h1 class="ml-hero__t" id="ml-hero-t" data-ml-split style="--ml-st:80ms">Un site complet pentru <span class="ml-nw">afacerea ta.</span><br>De la <span class="ml-nw">349 €</span>.</h1>
+        <p class="ml-hero__lead" data-ml-reveal style="--d:420ms">Scriem textele, facem designul, conectăm formularul și pornim reclama. Gata în 7 zile, cu preț fix în contract, iar site-ul rămâne pe numele tău.</p>
+        <div class="ml-hero__cta" data-ml-reveal style="--d:540ms">
+          <a class="ml-btn ml-btn--accent" href="#popup:schita" data-ml-cta="hero">
+            Cere oferta gratuită
+            <svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+          </a>
+          <a class="ml-link" href="https://wa.me/37378000525?text=Bun%C4%83!%20Vreau%20o%20schi%C8%9B%C4%83%20gratuit%C4%83%20pentru%20site." target="_blank" rel="noopener" data-ml-cta="hero">Scrie-ne pe WhatsApp</a>
+        </div>
+        <p class="ml-hero__note" data-ml-reveal style="--d:640ms">Te sunăm în aceeași zi lucrătoare. Fără obligații.</p><!-- DE CONFIRMAT: intervalul -->
+      </div>
+
+      <div class="ml-card ml-hx" data-ml-hero data-ml-reveal="right" style="--d:300ms">
+        <div class="ml-hx__head">
+          <div class="ml-hx__info" aria-live="polite">
+            <span class="ml-card__label">Proiecte recente</span>
+            <b class="ml-hx__name" data-ml-hero-name>Portofoliu</b>
+            <span class="ml-hx__meta" data-ml-hero-meta></span>
+          </div>
+          <a class="ml-hx__go" href="#portofoliu" data-ml-hero-go aria-label="Vezi portofoliul"><svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg></a>
+        </div>
+        <a class="ml-hx__stage" href="#portofoliu" data-ml-hero-stage data-ml-cursor="Vezi site-ul" tabindex="-1" aria-hidden="true">
+          <div class="ml-hx__slide is-on"><div class="ml-shot-box ml-hx__desk"><div class="ml-ph">Captură desktop</div></div></div>
+        </a>
+        <div class="ml-hx__dots" data-ml-hero-dots role="group" aria-label="Alege proiectul" hidden></div>
+      </div>
+    </div>
+
+    <div class="ml-bento ml-hero__bento" data-ml-stagger style="--d:620ms;--ml-st:90ms">
+      <div class="ml-card ml-card--lav">
+        <span class="ml-card__label">Termen</span>
+        <div class="ml-card__foot">
+          <p class="ml-card__big ml-hx__big" data-ml-count="7" data-ml-suffix=" zile">7 zile</p>
+          <p class="ml-card__text">pentru un landing page, 14 pentru un site de prezentare</p>
+        </div>
+      </div>
+
+      <div class="ml-card ml-card--ink">
+        <span class="ml-card__label">Gratuit, înainte de contract</span>
+        <div class="ml-card__foot">
+          <p class="ml-card__big ml-hx__big">48 h</p>
+          <p class="ml-card__text">până primești schița paginii și prețul fix, în scris</p>
+        </div>
+      </div>
+
+      <div class="ml-card">
+        <span class="ml-card__label">Din 2015</span>
+        <div class="ml-card__foot">
+          <p class="ml-card__big ml-hx__big" data-ml-count="120" data-ml-suffix="+">120+</p><!-- DE CONFIRMAT: numărul -->
+          <p class="ml-card__text">site-uri și campanii, în Moldova, România și alte 3 țări</p><!-- DE CONFIRMAT: țările -->
+        </div>
+      </div>
+
+      <div class="ml-card ml-card--lime">
+        <span class="ml-card__label">Cost pe cerere</span>
+        <div class="ml-card__foot">
+          <p class="ml-card__big ml-hx__big">1,78 $</p>
+          <p class="ml-card__text">firmă de curățenie, Chișinău, Landing + Google Ads</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.ml-hero{background:var(--ml-bg);padding:48px 0 56px}
+/* Sus: textul în stânga, proiectul recent în dreapta. Jos: patru carduri pe un rând. */
+.ml-hero__top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--ml-gap);align-items:stretch;margin-bottom:var(--ml-gap)}
+.ml-hero__text{display:flex;flex-direction:column;justify-content:center;padding:24px 40px 24px 8px}
+.ml-hero__t{font-size:clamp(40px,4.2vw,62px);font-weight:600;line-height:1.02;letter-spacing:-.045em;color:var(--ml-ink);text-wrap:balance}
+.ml-hero__lead{margin-top:22px;max-width:460px;font-size:18px;line-height:1.55;color:var(--ml-text);text-wrap:pretty}
+.ml-hero__cta{margin-top:28px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.ml-hero__note{margin-top:12px;font-size:14px;color:var(--ml-mute)}
+
+.ml-hero__bento{grid-auto-rows:212px}
+.ml-hx{min-height:520px;padding:8px;color:var(--ml-ink)}
+.ml-hx__head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:16px 16px 20px}
+.ml-hx__name{display:block;margin-top:4px;font-size:20px;font-weight:600;letter-spacing:-.02em}
+.ml-hx__go{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:background-color .25s ease,color .25s ease}
+.ml-hx__meta{display:block;margin-top:2px;font-size:14px;color:var(--ml-mute)}
+.ml-hx__stage{position:relative;display:block;flex:1;min-height:0;border-radius:var(--ml-r-in);overflow:hidden}
+/* slide-urile stau unul peste altul și se schimbă cu o trecere lină */
+.ml-hx__slide{position:absolute;inset:0;opacity:0;transition:opacity .7s var(--ml-ease);pointer-events:none}
+.ml-hx__slide.is-on{opacity:1}
+.ml-hx__desk{position:absolute;inset:0}
+.ml-hx__mob{position:absolute;right:20px;bottom:20px;width:23%;aspect-ratio:9 / 19.5;border:4px solid var(--ml-card);border-radius:16px;box-shadow:0 20px 40px -20px rgba(17,17,19,.45)}
+/* cu clip: ocupă tot cardul, fără telefonul-machetă (ar acoperi video-ul din pagina clientului) */
+.ml-hx__slide.has-video .ml-hx__mob{display:none}
+.ml-hx__video{object-position:50% 0}
+/* captura stă întâi câteva secunde sus (antetul și titlul site-ului), apoi coboară lent și urcă înapoi */
+.ml-hx__slide.is-on .ml-shot.is-tall{animation:mlPan 14s ease-in-out 1.2s infinite alternate}
+@keyframes mlPan{0%,22%{object-position:50% 0}90%,100%{object-position:50% 100%}}
+/* navigarea: pastilă de sticlă jos la mijloc, cu săgeți stânga-dreapta și puncte (zonă de atingere de cel puțin 24 px) */
+.ml-hx__dots{position:absolute;left:50%;bottom:20px;z-index:2;transform:translateX(-50%);display:flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.8);box-shadow:0 6px 18px -8px rgba(28,26,69,.35);-webkit-backdrop-filter:blur(12px) saturate(1.6);backdrop-filter:blur(12px) saturate(1.6)}
+.ml-hx__dots[hidden]{display:none}
+.ml-hx__arrow{width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50%;color:var(--ml-ink);transition:background-color .2s ease}
+.ml-hx__arrow svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ml-hx__arrow:active{transform:scale(.94)}
+.ml-hx__dot{position:relative;width:18px;height:24px;transition:width .35s var(--ml-ease)}
+.ml-hx__dot::before{content:"";position:absolute;left:5px;right:5px;top:50%;height:8px;margin-top:-4px;border-radius:999px;background:rgba(28,26,69,.25);transition:background-color .3s ease}
+.ml-hx__dot[aria-pressed="true"]{width:34px}
+.ml-hx__dot[aria-pressed="true"]::before{background:var(--ml-ink)}
+
+.ml-hx__big{font-size:clamp(40px,3.6vw,56px)}
+.ml-hero__bento .ml-card__text{margin-top:10px}
+.ml-hero__bento .ml-card--ink .ml-card__big{color:#fff}
+
+@media (hover:hover) and (pointer:fine){
+  .ml-hx:hover .ml-hx__go{background:var(--ml-ink);color:#fff}
+  .ml-motion .ml-hx__stage{cursor:none}
+  .ml-hx__dot:hover::before{background:rgba(28,26,69,.5)}
+  .ml-hx__arrow:hover{background:rgba(28,26,69,.08)}
+}
+@media (max-width:1024px){
+  /* pe tabletă rămân două coloane: textul și proiectul alături */
+  .ml-hero__text{padding:16px 24px 16px 8px}
+  .ml-hx{min-height:440px}
+  .ml-hero__bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:190px}
+}
+@media (max-width:860px){
+  .ml-hero__top{grid-template-columns:minmax(0,1fr)}
+  .ml-hero__text{padding:8px 8px 20px}
+  .ml-hero__t{max-width:16ch}
+  .ml-hx{min-height:0}
+  .ml-hx__stage{flex:none;aspect-ratio:16 / 10}
+}
+@media (max-width:640px){
+  .ml-hero{padding:24px 0 20px}
+  .ml-hero__text{padding:0 8px 16px}
+  .ml-hero__t{font-size:38px;line-height:1.05}
+  .ml-hero__lead{margin-top:16px;font-size:17px}
+  .ml-hero__cta{margin-top:20px;gap:12px}
+  .ml-hero__cta .ml-btn{width:100%}
+  .ml-hero__bento{grid-auto-rows:auto}
+  .ml-hx__head{padding:12px 12px 14px}
+  .ml-hx__stage{aspect-ratio:16 / 11}
+  .ml-hx__mob{right:12px;bottom:12px;border-width:3px;border-radius:12px}
+  .ml-hx__dots{bottom:16px}
+  .ml-hx__meta{font-size:13px}
+  /* pe mobil, linkul WhatsApp devine buton întreg, ușor de apăsat */
+  .ml-hero__cta .ml-link{width:100%;height:52px;justify-content:center;padding:0;border:1px solid var(--ml-line-2);border-radius:999px}
+  .ml-hero__cta .ml-link::after{display:none}
+  .ml-hero__bento .ml-card{min-height:150px;padding:16px}
+  .ml-hx__big{font-size:34px}
+  .ml-hero__bento .ml-card__text{margin-top:8px;font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){
+  .ml-hx__slide.is-on .ml-shot.is-tall{animation:none}
+  .ml-hx__slide{transition:none}
+  .ml-motion .ml-hx__stage{cursor:pointer}
+}
+</style>
+<script>
+(function () {
+  function init() {
+    var root = document.querySelector('[data-ml-hero]');
+    if (!root || root.__mlHero) return;
+    root.__mlHero = true;
+    var list = (window.ML_PROIECTE || []).filter(function (p) { return p.desktop || p.video; }).slice(0, 8);
+    if (!list.length) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var stage = root.querySelector('[data-ml-hero-stage]');
+    var go = root.querySelector('[data-ml-hero-go]');
+    var nameEl = root.querySelector('[data-ml-hero-name]');
+    var metaEl = root.querySelector('[data-ml-hero-meta]');
+    var dotsEl = root.querySelector('[data-ml-hero-dots]');
+    var n = list.length, cur = 0, timer = null, paused = false;
+
+    // Captura: prima se încarcă imediat, restul după ce s-a încărcat pagina
+    var later = [];
+    function img(box, src, now) {
+      var im = new Image();
+      im.className = 'ml-shot';
+      im.alt = '';
+      im.decoding = 'async';
+      im.onload = function () {
+        if (im.naturalHeight / im.naturalWidth > (box.clientHeight / Math.max(box.clientWidth, 1)) * 1.25) im.classList.add('is-tall');
+      };
+      if (now) im.src = src; else later.push(function () { im.src = src; });
+      box.appendChild(im);
+    }
+
+    stage.innerHTML = '';
+    var slides = list.map(function (p, i) {
+      var sl = document.createElement('div');
+      sl.className = 'ml-hx__slide';
+      var desk = document.createElement('div');
+      desk.className = 'ml-shot-box ml-hx__desk';
+      sl.appendChild(desk);
+      if (p.video) sl.classList.add('has-video');
+      if (p.video && !reduce) {
+        // clipul primului ecran: fără sunet, în buclă, rulează doar cât e slide-ul activ
+        var v = document.createElement('video');
+        v.className = 'ml-shot ml-hx__video';
+        v.muted = true; v.loop = true; v.playsInline = true;
+        v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
+        v.preload = i === 0 ? 'auto' : 'none';
+        if (p.poster) v.poster = p.poster;
+        v.src = p.video;
+        desk.appendChild(v);
+        sl.__video = v;
+      } else {
+        img(desk, p.video ? (p.poster || p.desktop) : p.desktop, i === 0);
+      }
+      // telefonul-machetă e oprit deocamdată: încurca slider-ul. Ca să-l repornești, pune true în loc de false.
+      var arataTelefon = false;
+      if (arataTelefon && p.mobil && !p.video) {
+        var mob = document.createElement('div');
+        mob.className = 'ml-shot-box ml-hx__mob';
+        img(mob, p.mobil, i === 0);
+        sl.appendChild(mob);
+      }
+      stage.appendChild(sl);
+      return sl;
+    });
+
+    var dots = [];
+    if (n > 1) {
+      // săgeată stânga · puncte · săgeată dreapta
+      function arrow(dir) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'ml-hx__arrow';
+        b.setAttribute('aria-label', dir < 0 ? 'Proiectul anterior' : 'Proiectul următor');
+        b.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="' + (dir < 0 ? 'M10 3 5 8l5 5' : 'M6 3l5 5-5 5') + '"/></svg>';
+        b.addEventListener('click', function () { show(cur + dir); });
+        return b;
+      }
+      dotsEl.appendChild(arrow(-1));
+      list.forEach(function (p, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'ml-hx__dot';
+        b.setAttribute('aria-label', 'Proiectul ' + (i + 1) + ': ' + (p.nume || ''));
+        b.addEventListener('click', function () { show(i); });
+        dotsEl.appendChild(b);
+        dots.push(b);
+      });
+      dotsEl.appendChild(arrow(1));
+      dotsEl.hidden = false;
+    }
+
+    function play(v) { var r = v.play && v.play(); if (r && r.catch) r.catch(function () {}); }
+    function show(i) {
+      cur = (i + n) % n;
+      slides.forEach(function (sl, k) {
+        var on = k === cur;
+        sl.classList.toggle('is-on', on);
+        if (sl.__video) {
+          if (on) { sl.__video.preload = 'auto'; try { sl.__video.currentTime = 0; } catch (e) {} play(sl.__video); }
+          else sl.__video.pause();
+        }
+      });
+      dots.forEach(function (d, k) { d.setAttribute('aria-pressed', String(k === cur)); });
+      var p = list[cur];
+      nameEl.textContent = p.nume || '';
+      metaEl.textContent = [p.domeniu, p.tip].filter(Boolean).join(' · ');
+      [go, stage].forEach(function (a) {
+        a.href = p.url || '#portofoliu';
+        if (p.url) { a.target = '_blank'; a.rel = 'noopener'; } else a.removeAttribute('target');
+      });
+      go.setAttribute('aria-label', p.url ? 'Deschide site-ul ' + p.nume + ' într-o filă nouă' : 'Vezi portofoliul');
+      schedule();
+    }
+    function schedule() {
+      clearTimeout(timer);
+      if (reduce || paused || n < 2 || document.hidden) return;
+      timer = setTimeout(function () { show(cur + 1); }, list[cur].video ? 10000 : 6500);
+    }
+    // se oprește cât timp vizitatorul se uită la un proiect (mouse sau tastatură) și când fila e în fundal
+    root.addEventListener('mouseenter', function () { paused = true; clearTimeout(timer); });
+    root.addEventListener('mouseleave', function () { paused = false; schedule(); });
+    root.addEventListener('focusin', function () { paused = true; clearTimeout(timer); });
+    root.addEventListener('focusout', function () { paused = false; schedule(); });
+    document.addEventListener('visibilitychange', schedule);
+
+    show(0);
+    function loadRest() { later.forEach(function (f) { f(); }); later = []; }
+    if (document.readyState === 'complete') setTimeout(loadRest, 300);
+    else window.addEventListener('load', function () { setTimeout(loadRest, 300); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>

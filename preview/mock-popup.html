@@ -1,0 +1,77 @@
+<!--
+  DOAR PENTRU PREVIZUALIZARE. NU se pune în Tilda.
+  Simulează formularul popup Tilda (BF502N, link #popup:schita), ca să vezi cum arată fluxul.
+-->
+<div class="ml ml-mock" id="ml-mock" hidden>
+  <div class="ml-mock__overlay" data-ml-close></div>
+  <div class="ml-mock__dialog" role="dialog" aria-modal="true" aria-labelledby="ml-mock-title">
+    <button class="ml-mock__x" type="button" data-ml-close aria-label="Închide">
+      <svg class="ml-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <div data-ml-step="form">
+      <span class="ml-mock__tag">Previzualizare. În Tilda aici e formularul nativ.</span>
+      <h3 id="ml-mock-title">Schița și prețul fix în 48 de ore</h3>
+      <p>Lasă numărul. Te sunăm pentru o discuție de 20 de minute, apoi îți trimitem schița gratuită.</p>
+      <form novalidate>
+        <label>Nume (opțional)<input type="text" name="Name" autocomplete="name"></label>
+        <label>Telefon<input type="tel" name="Phone" autocomplete="tel" placeholder="+373 sau +40" required></label>
+        <label>Pachet
+          <select name="Pachet">
+            <option>Nu știu încă</option>
+            <option>Landing Start, 349 €</option>
+            <option>Landing + Google Ads, 590 €</option>
+            <option>Site de prezentare, 790 €</option>
+            <option>Altceva (magazin online, mai multe limbi)</option>
+          </select>
+        </label>
+        <button class="ml-btn ml-btn--accent" type="submit">Trimite cererea</button>
+        <small>Folosim numărul doar ca să te sunăm despre această cerere.</small>
+      </form>
+    </div>
+    <div data-ml-step="done" hidden>
+      <h3>Mulțumim!</h3>
+      <p>Am primit cererea. Te sunăm în aceeași zi lucrătoare, între 9:00 și 18:00, pentru discuția de 20 de minute.</p>
+    </div>
+  </div>
+</div>
+<style>
+.ml-mock{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:16px}
+.ml-mock[hidden]{display:none}
+.ml-mock__overlay{position:absolute;inset:0;background:rgba(17,17,19,.5)}
+.ml-mock__dialog{position:relative;width:100%;max-width:460px;max-height:100%;overflow:auto;padding:36px 32px 28px;border-radius:12px;background:#fff}
+.ml-mock__x{position:absolute;top:12px;right:12px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--ml-ink)}
+.ml-mock__tag{display:inline-block;padding:3px 8px;border-radius:4px;background:#FFF1D6;font-size:12px;color:#7A4B00}
+.ml-mock h3{margin-top:16px;font-size:26px;font-weight:600;line-height:1.15;letter-spacing:-.03em;color:var(--ml-ink)}
+.ml-mock p{margin-top:10px;font-size:15px;color:var(--ml-mute)}
+.ml-mock form{margin-top:24px;display:flex;flex-direction:column;gap:14px}
+.ml-mock label{display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:500;color:var(--ml-ink)}
+.ml-mock input,.ml-mock select{height:50px;padding:0 14px;border-radius:8px;border:1px solid var(--ml-line-2);font:inherit;font-weight:400;font-size:16px;background:#fff;color:var(--ml-ink)}
+.ml-mock input:focus,.ml-mock select:focus{outline:2px solid var(--ml-accent);outline-offset:1px}
+.ml-mock form .ml-btn{margin-top:6px;width:100%}
+.ml-mock small{font-size:13px;color:var(--ml-mute)}
+</style>
+<script>
+(function () {
+  var m = document.getElementById('ml-mock');
+  var last = null;
+  function open(trigger) {
+    last = trigger;
+    m.hidden = false;
+    m.querySelector('[data-ml-step="form"]').hidden = false;
+    m.querySelector('[data-ml-step="done"]').hidden = true;
+    setTimeout(function () { m.querySelector('input').focus(); }, 30);
+  }
+  function close() { m.hidden = true; if (last) last.focus(); }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#popup:"]');
+    if (a) { e.preventDefault(); open(a); return; }
+    if (e.target.closest('[data-ml-close]')) close();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !m.hidden) close(); });
+  m.querySelector('form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    m.querySelector('[data-ml-step="form"]').hidden = true;
+    m.querySelector('[data-ml-step="done"]').hidden = false;
+  });
+})();
+</script>

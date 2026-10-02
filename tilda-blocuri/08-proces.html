@@ -1,0 +1,135 @@
+<!--
+  MoreLeads · Bloc 08 · PROCES
+  Bara de sub fiecare pas arată zilele din cele 14 (data-ml-days="de la-până la").
+-->
+<section class="ml ml-ps ml-sec" id="proces" aria-labelledby="ml-ps-t">
+  <div class="ml-wrap">
+    <div class="ml-head">
+      <h2 class="ml-h2" id="ml-ps-t" data-ml-split>Cum lucrăm, pas cu pas</h2>
+      <p data-ml-reveal style="--d:150ms">Un landing page e gata în 7 zile, un site de prezentare în 14, din ziua în care aprobi schița și plătești prima tranșă. Mai jos, planul pentru 14 zile. Aprobi fiecare etapă înainte să mergem mai departe.</p>
+    </div>
+
+    <ol class="ml-bento ml-ps__grid" data-ml-stagger style="--ml-st:100ms">
+      <li class="ml-card ml-card--lav ml-ps__step">
+        <div class="ml-ps__top"><span class="ml-card__label">Înainte de contract, gratuit</span><span class="ml-ps__n ml-num">00</span></div>
+        <div class="ml-card__foot">
+          <h3 class="ml-card__title">Discuția și schița</h3>
+          <p class="ml-card__text">Vorbim 20 de minute despre afacerea ta, clienți și concurență.</p>
+          <dl class="ml-ps__you">
+            <div><dt>Tu</dt><dd>Răspunzi la câteva întrebări, la telefon.</dd></div>
+            <div><dt>Primești</dt><dd>În 48 de ore, în scris: schița paginii pe secțiuni, ideile de titlu, prețul fix și data lansării.</dd></div>
+          </dl>
+          
+        </div>
+      </li>
+      <li class="ml-card ml-ps__step">
+        <div class="ml-ps__top"><span class="ml-card__label">Ziua 1</span><span class="ml-ps__n ml-num">01</span></div>
+        <div class="ml-card__foot">
+          <h3 class="ml-card__title">Contract și start</h3>
+          <p class="ml-card__text">Semnăm contractul cu prețul și termenul din schiță.</p>
+          <dl class="ml-ps__you">
+            <div><dt>Tu</dt><dd>Plătești 50%. Ne dai logo-ul, pozele și accesul la domeniu.</dd></div>
+            <div><dt>Primești</dt><dd>Contractul și planul pe zile.</dd></div>
+          </dl>
+          <div class="ml-ps__days" data-ml-days="1-1" aria-hidden="true"></div>
+        </div>
+      </li>
+      <li class="ml-card ml-ps__step">
+        <div class="ml-ps__top"><span class="ml-card__label">Zilele 2–4</span><span class="ml-ps__n ml-num">02</span></div>
+        <div class="ml-card__foot">
+          <h3 class="ml-card__title">Textele</h3>
+          <p class="ml-card__text">Scriem textele pe secțiuni: titlul, oferta, serviciile, întrebările.</p>
+          <dl class="ml-ps__you">
+            <div><dt>Tu</dt><dd>Răspunzi la 10 întrebări despre ofertă și clienți. Aprobi textele.</dd></div>
+            <div><dt>Primești</dt><dd>Documentul cu toate textele paginii.</dd></div>
+          </dl>
+          <div class="ml-ps__days" data-ml-days="2-4" aria-hidden="true"></div>
+        </div>
+      </li>
+      <li class="ml-card ml-ps__step">
+        <div class="ml-ps__top"><span class="ml-card__label">Zilele 5–10</span><span class="ml-ps__n ml-num">03</span></div>
+        <div class="ml-card__foot">
+          <h3 class="ml-card__title">Design și construcție</h3>
+          <p class="ml-card__text">Facem designul și construim pagina, pe telefon și pe desktop.</p>
+          <dl class="ml-ps__you">
+            <div><dt>Tu</dt><dd>Vezi pagina pe un link de previzualizare și ceri modificări.</dd></div>
+            <div><dt>Primești</dt><dd>Pagina gata, de aprobat. Revizii până ești mulțumit.</dd></div>
+          </dl>
+          <div class="ml-ps__days" data-ml-days="5-10" aria-hidden="true"></div>
+        </div>
+      </li>
+      <li class="ml-card ml-card--ink ml-ps__step">
+        <div class="ml-ps__top"><span class="ml-card__label">Zilele 11–14</span><span class="ml-ps__n ml-num">04</span></div>
+        <div class="ml-card__foot">
+          <h3 class="ml-card__title">Lansare</h3>
+          <p class="ml-card__text">Conectăm formularele, instalăm urmărirea cererilor, testăm pe telefoane reale, publicăm.</p>
+          <dl class="ml-ps__you">
+            <div><dt>Tu</dt><dd>Plătești restul de 50% la lansare.</dd></div>
+            <div><dt>Primești</dt><dd>Site-ul live, pe domeniul tău, și o lecție de 30 de minute ca să-l editezi singur.</dd></div>
+          </dl>
+          <div class="ml-ps__days" data-ml-days="11-14" aria-hidden="true"></div>
+        </div>
+      </li>
+      <li class="ml-card ml-card--lime ml-ps__fast">
+        <p><b>După lansare.</b> Hosting, backup, actualizări și modificări mici de text, pentru 20 €/lună. Cu pachetul Google Ads, optimizăm campania în fiecare lună. Ne scrii pe WhatsApp și răspundem în aceeași zi lucrătoare.</p><!-- DE CONFIRMAT: timpul de răspuns -->
+        <a class="ml-btn ml-btn--sm ml-ps__fastbtn" href="https://wa.me/37378000525?text=Bun%C4%83!%20Am%20nevoie%20de%20site%20p%C3%A2n%C4%83%20la%20data%3A%20" target="_blank" rel="noopener" data-ml-cta="proces-urgent">Ai un termen strict? Scrie-ne</a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<style>
+.ml-ps{background:var(--ml-bg)}
+.ml-ps__grid{grid-auto-rows:auto}
+.ml-ps__step{min-height:300px}
+/* la fiecare pas: ce face clientul și ce primește */
+.ml-ps__you{margin:14px 0 0;display:grid;gap:8px;padding-top:12px;border-top:1px solid var(--ml-line)}
+.ml-card--ink .ml-ps__you,.ml-card--lav .ml-ps__you{border-top-color:rgba(255,255,255,.18)}
+.ml-card--lav .ml-ps__you{border-top-color:rgba(28,26,69,.14)}
+.ml-ps__you div{display:grid;grid-template-columns:64px minmax(0,1fr);gap:8px;font-size:14px;line-height:1.45}
+.ml-ps__you dt{font-weight:600;color:var(--ml-ink)}
+.ml-card--ink .ml-ps__you dt{color:#fff}
+.ml-ps__you dd{margin:0;color:var(--ml-text)}
+.ml-card--ink .ml-ps__you dd{color:var(--ml-on-ink)}
+.ml-card--lav .ml-card__title{color:var(--ml-ink)}
+.ml-ps__top{display:flex;justify-content:space-between;align-items:baseline}
+.ml-ps__n{font-size:14px;color:var(--ml-mute)}
+.ml-card--ink .ml-ps__n{color:#9592C4}
+.ml-ps__step .ml-card__text{margin-top:8px}
+.ml-ps__days{margin-top:22px;display:grid;grid-template-columns:repeat(14,minmax(0,1fr));gap:3px}
+.ml-ps__days i{height:6px;border-radius:3px;background:#DCDCE3}
+.ml-card--ink .ml-ps__days i{background:rgba(255,255,255,.12)}
+.ml-ps__days i.on{background:var(--ml-accent)}
+.ml-card--ink .ml-ps__days i.on{background:var(--ml-lav)}
+/* Zilele se aprind pe rând când apare pasul */
+.ml-motion .ml-ps__days i.on{background:#DCDCE3;transition:background-color .3s ease;transition-delay:calc(var(--i,0) * 70ms + .5s)}
+.ml-motion .ml-card--ink .ml-ps__days i.on{background:rgba(255,255,255,.12)}
+.ml-motion .is-in .ml-ps__days i.on{background:var(--ml-accent)}
+.ml-motion .is-in .ml-card--ink .ml-ps__days i.on{background:var(--ml-lav)}
+
+.ml-ps__fast{grid-column:1 / -1;flex-direction:row;align-items:center;justify-content:space-between;gap:16px;padding:18px 18px 18px 28px}
+.ml-ps__fast p{max-width:760px;font-size:16px;color:var(--ml-text)}
+.ml-ps__fast b{color:var(--ml-ink)}
+.ml-ps__fastbtn{background:#fff;color:var(--ml-ink)}
+.ml-ps__fastbtn:hover{background:var(--ml-bg);box-shadow:inset 0 0 0 1px var(--ml-ink)}
+@media (max-width:640px){
+  .ml-ps__step{min-height:0}
+  .ml-ps__step .ml-card__foot{padding-top:40px}
+  .ml-ps__fast{flex-direction:column;align-items:stretch;padding:20px}
+}
+@media (prefers-reduced-motion:reduce){.ml-motion .ml-ps__days i.on{transition:none}}
+</style>
+<script>
+(function () {
+  var rows = document.querySelectorAll('[data-ml-days]');
+  Array.prototype.forEach.call(rows, function (row) {
+    var r = row.getAttribute('data-ml-days').split('-');
+    var from = +r[0], to = +r[1], html = '';
+    for (var d = 1; d <= 14; d++) {
+      var on = d >= from && d <= to;
+      html += '<i' + (on ? ' class="on" style="--i:' + (d - from) + '"' : '') + '></i>';
+    }
+    row.innerHTML = html;
+  });
+})();
+</script>

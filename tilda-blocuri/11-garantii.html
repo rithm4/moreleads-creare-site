@@ -1,0 +1,54 @@
+<!--
+  MoreLeads · Bloc 11 · GARANȚII
+-->
+<section class="ml ml-gr ml-sec" aria-labelledby="ml-gr-t">
+  <div class="ml-wrap">
+    <div class="ml-bento ml-gr__bento" data-ml-stagger style="--ml-st:90ms">
+      <article class="ml-card ml-card--soft ml-c2 ml-r2 ml-gr__main">
+        <span class="ml-card__label">Fără risc pentru tine</span>
+        <div class="ml-card__foot">
+          <h2 class="ml-gr__t" id="ml-gr-t">Vezi schița și prețul înainte să plătești.</h2>
+          <p class="ml-card__text ml-gr__lead">În 48 de ore de la discuție primești schița paginii și prețul fix. Dacă nu ți se potrivește, ne oprim aici și nu datorezi nimic.</p>
+          <a class="ml-btn ml-btn--accent ml-gr__cta" href="#popup:schita" data-ml-cta="garantii">
+            Cere oferta gratuită
+            <svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5"/></svg>
+          </a>
+        </div>
+      </article>
+      <article class="ml-card">
+        <span class="ml-card__label">Preț</span>
+        <div class="ml-card__foot"><h3 class="ml-card__title">Preț fix în contract</h3><p class="ml-card__text">Suma din ofertă nu se schimbă pe parcurs. Plătești 50% la start și 50% la lansare.</p></div>
+      </article>
+      <article class="ml-card">
+        <span class="ml-card__label">Termen</span>
+        <div class="ml-card__foot"><h3 class="ml-card__title">Termen scris în ofertă</h3><p class="ml-card__text">Știi de la început data lansării. Dacă întârziem din vina noastră, administrarea e gratuită 3 luni.</p></div><!-- DE CONFIRMAT: compensația -->
+      </article>
+      <article class="ml-card">
+        <span class="ml-card__label">Design</span>
+        <div class="ml-card__foot"><h3 class="ml-card__title">Revizii până aprobi designul</h3><p class="ml-card__text">Modificăm de câte ori e nevoie înainte de lansare, fără cost în plus.</p></div><!-- DE CONFIRMAT: nelimitat sau un număr -->
+      </article>
+      <article class="ml-card">
+        <span class="ml-card__label">După lansare</span>
+        <div class="ml-card__foot"><h3 class="ml-card__title">30 de zile de garanție tehnică</h3><p class="ml-card__text">Orice problemă tehnică apărută după lansare o rezolvăm gratuit.</p></div><!-- DE CONFIRMAT: zilele -->
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+.ml-gr{background:var(--ml-bg)}
+.ml-gr__bento{grid-auto-rows:220px}
+.ml-gr__main{padding:32px}
+.ml-gr__t{max-width:14ch;font-size:clamp(34px,3.8vw,54px);font-weight:600;line-height:1.08;letter-spacing:-.04em;color:var(--ml-ink);text-wrap:balance}
+.ml-gr__lead{margin-top:22px;max-width:420px;font-size:16px}
+.ml-gr__cta{margin-top:28px}
+.ml-gr .ml-card__title{font-size:20px}
+.ml-gr .ml-card__text{margin-top:6px}
+@media (max-width:1024px){.ml-gr__main{grid-row:auto;min-height:340px}}
+@media (max-width:640px){
+  .ml-gr__bento{grid-auto-rows:auto}
+  .ml-gr__main{padding:24px;min-height:360px}
+  .ml-gr__cta{width:100%}
+  .ml-gr .ml-card:not(.ml-gr__main){min-height:150px}
+}
+</style>

@@ -1,0 +1,384 @@
+<!--
+  MoreLeads · Bloc 00 · SETĂRI
+  Pune-l PRIMUL pe pagină, într-un bloc T123. Nu afișează nimic:
+  încarcă fontul, culorile, stilurile comune, animațiile și scripturile comune.
+
+  Animații (le folosesc celelalte blocuri prin atribute):
+    data-ml-split           titlul apare cuvânt cu cuvânt ( ="chars": literă cu literă )
+    data-ml-reveal          elementul apare de jos ( ="right": din dreapta )
+    data-ml-stagger         copiii apar unul după altul
+    data-ml-line            linia de sus se desenează de la stânga la dreapta
+    data-ml-clip            imaginea se dezvelește ca o cortină
+    data-ml-count           cifra numără de la 0 (data-ml-from, data-ml-prefix, data-ml-suffix)
+    data-ml-cursor="Text"   pe desktop, eticheta care urmărește mouse-ul
+  Pentru vizitatorii care au cerut „mai puțină mișcare” în sistem rămân doar fade-uri scurte.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ml-bg:#FFFFFF;       /* fundalul paginii */
+  --ml-card:#F4F4F6;     /* cardurile */
+  --ml-muted:#EBEBEF;    /* carduri și zone secundare */
+  --ml-lime:#D8F76B;     /* accent rar: 3-4 carduri */
+  --ml-lav:#C9B8FF;      /* lavandă: cardurile mari colorate */
+  --ml-lav-ink:#4B3F99;  /* etichetele mici pe lavandă */
+  --ml-soft:#EEE8FF;     /* lavandă foarte deschisă: carduri secundare */
+  --ml-r:20px;           /* colțurile cardurilor */
+  --ml-r-in:12px;        /* colțurile din interiorul cardurilor (20 minus marginea de 8) */
+  --ml-gap:12px;         /* spațiul dintre carduri */
+  --ml-paper:#F6F5F2;
+  --ml-white:#FFFFFF;
+  --ml-ink:#1C1A45;      /* bleumarinul din logo: titluri și carduri închise */
+  --ml-ink-2:#2A2763;    /* bleumarin mai deschis: hover și casete pe cardurile închise */
+  --ml-on-ink:#B4B1D8;   /* textul secundar pe cardurile închise */
+  --ml-text:#3B3A55;
+  --ml-mute:#6C6A85;
+  --ml-line:#E4E4EA;
+  --ml-line-2:#D4D4DC;
+  --ml-accent:#7A5AF0;   /* butoanele: violet-lavandă, contrast 4,6:1 cu textul alb */
+  --ml-accent-hover:#6A4AE4;
+  --ml-glass:rgba(255,255,255,.62);       /* sticla: antetul și bara de jos de pe telefon */
+  --ml-glass-line:rgba(255,255,255,.75);
+  --ml-font:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --ml-header-h:64px;    /* înălțimea panoului de sus */
+  --ml-header-top:10px;  /* cât plutește panoul de sus față de marginea ecranului */
+  --ml-ease:cubic-bezier(0.23,1,0.32,1);        /* ease-out puternic: intrări, hover */
+  --ml-ease-in-out:cubic-bezier(0.77,0,0.175,1); /* mișcare pe ecran: linii, cortine */
+}
+html{scroll-behavior:smooth}
+
+/* Bază. Tot ce e în blocurile noastre stă sub clasa .ml, ca să nu se bată cu stilurile Tilda.
+   :where() ține resetările la specificitate zero, ca stilurile componentelor să le poată suprascrie. */
+.ml,.ml *,.ml *::before,.ml *::after{box-sizing:border-box}
+.ml{font-family:var(--ml-font);color:var(--ml-text);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+:where(.ml) :where(h1,h2,h3,h4,p,ul,ol,dl,dd,figure,blockquote){margin:0;padding:0}
+:where(.ml) :where(ul,ol){list-style:none}
+:where(.ml) a{color:inherit;text-decoration:none}
+:where(.ml) :where(img,video){display:block;max-width:100%}
+:where(.ml) button{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:pointer}
+.ml [id]{scroll-margin-top:calc(var(--ml-header-h) + var(--ml-header-top) + 16px)}
+.ml a:focus-visible,.ml button:focus-visible,.ml summary:focus-visible{outline:2px solid var(--ml-accent);outline-offset:3px}
+/* pe lavandă conturul violet abia se vede: îl facem bleumarin; pe cardurile închise, alb */
+.ml-card--lav a:focus-visible,.ml-card--lav button:focus-visible,.ml-card--soft a:focus-visible{outline-color:var(--ml-ink)}
+.ml-card--ink a:focus-visible,.ml-card--ink button:focus-visible,a.ml-card--ink:focus-visible{outline-color:#fff}
+/* fără cuvinte rămase singure pe ultimul rând */
+.ml-card__text,.ml-head p,.ml-plan__list li,.ml-pr__notes p,.ml-qa p{text-wrap:pretty}
+.ml-card__title{text-wrap:balance}
+
+/* Layout */
+.ml-wrap{width:100%;max-width:1320px;margin:0 auto;padding:0 40px}
+.ml-sec{padding:56px 0}
+/* Antet de secțiune: titlul în stânga, o frază scurtă în dreapta */
+.ml-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap;margin-bottom:28px}
+.ml-h2{max-width:18ch;font-size:clamp(30px,3.4vw,46px);font-weight:600;line-height:1.08;letter-spacing:-.035em;color:var(--ml-ink);text-wrap:balance}
+.ml-head p{max-width:400px;font-size:16px;color:var(--ml-mute)}
+
+/* Bento: grilă de carduri cu același spațiu și aceleași colțuri peste tot */
+.ml-bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(248px,auto);grid-auto-flow:dense;gap:var(--ml-gap)}
+.ml-c2{grid-column:span 2}
+.ml-c3{grid-column:span 3}
+.ml-c4{grid-column:1 / -1}
+.ml-r2{grid-row:span 2}
+.ml-card{position:relative;display:flex;flex-direction:column;min-width:0;padding:28px;border-radius:var(--ml-r);background:var(--ml-card);color:var(--ml-text);overflow:hidden}
+.ml-card--lav{background:var(--ml-lav);color:var(--ml-text)}
+.ml-card--ink{background:var(--ml-ink);color:var(--ml-on-ink)}
+.ml-card--muted{background:var(--ml-muted)}
+.ml-card--lime{background:var(--ml-lime);color:var(--ml-ink)}
+.ml-card--soft{background:var(--ml-soft)}
+.ml-card--lime .ml-card__label,.ml-card--soft .ml-card__label,
+.ml-card--lime .ml-card__text,.ml-card--soft .ml-card__text{color:#4A4766}
+.ml-card__label{font-size:14px;font-weight:500;line-height:1.3;color:var(--ml-mute)}
+.ml-card--lav .ml-card__label{color:var(--ml-lav-ink)}
+.ml-card--lav .ml-card__text{color:var(--ml-text)}
+.ml-card--ink .ml-card__label{color:#9592C4}
+.ml-card__big{font-size:clamp(52px,5.4vw,84px);font-weight:500;line-height:.95;letter-spacing:-.055em;color:var(--ml-ink)}
+.ml-card__title{font-size:22px;font-weight:600;line-height:1.2;letter-spacing:-.02em;color:var(--ml-ink)}
+.ml-card__text{font-size:15px;line-height:1.55;color:var(--ml-mute)}
+.ml-card--ink .ml-card__big,.ml-card--ink .ml-card__title{color:#fff}
+.ml-card--ink .ml-card__text{color:var(--ml-on-ink)}
+/* Sticlă pe cardurile colorate: luciu în colțul de sus și o margine fină de lumină */
+.ml-card--lav,.ml-card--lime{background-image:linear-gradient(155deg,rgba(255,255,255,.55) 0%,rgba(255,255,255,.12) 32%,rgba(255,255,255,0) 55%);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),inset 0 0 0 1px rgba(255,255,255,.35),0 10px 30px -18px rgba(75,63,153,.45)}
+.ml-card--ink{background-image:linear-gradient(155deg,rgba(255,255,255,.10) 0%,rgba(255,255,255,.03) 35%,rgba(255,255,255,0) 60%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 0 0 1px rgba(255,255,255,.06)}
+.ml-card__foot{margin-top:auto;padding-top:24px}
+.ml-card__big+.ml-card__text{margin-top:12px}
+a.ml-card{transition:background-color .25s ease}
+.ml-num{font-variant-numeric:tabular-nums}
+.ml-nw{white-space:nowrap}
+
+/* Butoane și linkuri */
+.ml-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font-weight:500;font-size:16px;line-height:1;white-space:nowrap;cursor:pointer;transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .16s var(--ml-ease)}
+.ml-btn:active{transform:scale(.97)}
+/* butonul principal: violet cu luciu de sticlă sus și o umbră violet difuză sub el */
+.ml-btn--accent{background-color:var(--ml-accent);background-image:linear-gradient(180deg,rgba(255,255,255,.24) 0%,rgba(255,255,255,.06) 48%,rgba(255,255,255,0) 52%);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(28,26,69,.18),0 10px 24px -10px rgba(122,90,240,.65);transition:background-color .2s ease,box-shadow .25s ease,transform .16s var(--ml-ease)}
+.ml-btn--accent:hover{background-color:var(--ml-accent-hover);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(28,26,69,.18),0 14px 30px -10px rgba(122,90,240,.75)}
+.ml-btn--line{border:1px solid var(--ml-line-2);color:var(--ml-ink)}
+.ml-btn--line:hover{border-color:var(--ml-ink)}
+.ml-btn--white{background:#fff;color:var(--ml-ink)}
+.ml-btn--white:hover{background:#E9E9EE}
+.ml-btn--sm{height:42px;padding:0 18px;font-size:15px}
+.ml-link{position:relative;display:inline-flex;align-items:center;gap:8px;font-weight:500;color:var(--ml-ink);border-bottom:1px solid var(--ml-line-2);padding-bottom:3px}
+.ml-link::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:0 50%;transition:transform .45s var(--ml-ease)}
+.ml-arrow{width:16px;height:16px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--ml-ease)}
+.ml-ico{width:20px;height:20px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover) and (pointer:fine){
+  .ml-link:hover::after{transform:scaleX(1)}
+  .ml-btn:hover .ml-arrow,.ml-link:hover .ml-arrow{transform:translateX(3px)}
+  .ml-link:hover .ml-arrow--out{transform:translate(2px,-2px)}
+}
+
+/* Capturi de ecran ale proiectelor */
+.ml-shot-box{position:relative;overflow:hidden;border-radius:var(--ml-r-in);background:var(--ml-muted)}
+.ml-shot{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;transition:object-position 6s cubic-bezier(0.45,0,0.55,1),transform 1.4s var(--ml-ease)}
+/* Până pui screenshot-ul: fundal hașurat, ca într-o machetă de designer */
+.ml-ph{position:absolute;inset:0;display:flex;align-items:flex-end;padding:14px 16px;font-size:13px;line-height:1.3;color:var(--ml-mute);background:repeating-linear-gradient(135deg,rgba(17,17,19,.045) 0 1px,transparent 1px 12px),var(--ml-muted);transition:transform 1.4s var(--ml-ease)}
+
+@media (max-width:1024px){
+  .ml-bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ml-c3{grid-column:1 / -1}
+}
+@media (max-width:640px){
+  :root{--ml-header-h:56px;--ml-header-top:8px;--ml-r:18px;--ml-r-in:10px;--ml-gap:10px}
+  .ml{font-size:16px}
+  .ml-wrap{padding:0 12px}
+  .ml-sec{padding:36px 0}
+  .ml-head{padding:0 8px;margin-bottom:20px}
+  .ml-bento{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}
+  .ml-c2,.ml-c3{grid-column:auto}
+  .ml-r2{grid-row:auto}
+  .ml-card{padding:22px}
+}
+
+/* ---------- Animații ----------
+   Stările ascunse se aplică doar când scriptul a adăugat .ml-motion pe <html>,
+   deci fără JavaScript pagina se vede normal. */
+.ml-w{display:inline-block;overflow:hidden;vertical-align:top;padding:.1em 0 .14em;margin:-.1em 0 -.14em}
+.ml-w__i{display:inline-block}
+.ml-motion [data-ml-split] .ml-w__i{transform:translateY(112%);transition:transform 1s var(--ml-ease);transition-delay:calc(var(--i,0) * var(--ml-st,60ms) + var(--d,0ms))}
+.ml-motion [data-ml-split].is-in .ml-w__i{transform:none}
+
+.ml-motion [data-ml-reveal]{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ml-ease),transform .9s var(--ml-ease);transition-delay:var(--d,0ms)}
+.ml-motion [data-ml-reveal="right"]{transform:translateX(64px)}
+.ml-motion [data-ml-reveal].is-in{opacity:1;transform:none}
+
+.ml-motion [data-ml-stagger]>*{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ml-ease),transform .8s var(--ml-ease);transition-delay:calc(var(--i,0) * var(--ml-st,70ms) + var(--d,0ms))}
+.ml-motion [data-ml-stagger].is-in>*{opacity:1;transform:none}
+
+.ml-motion [data-ml-line]{position:relative;border-top-color:transparent}
+.ml-motion [data-ml-line]::before{content:"";position:absolute;left:0;right:0;top:-1px;height:1px;background:var(--ml-line-color,var(--ml-ink));transform:scaleX(0);transform-origin:0 50%;transition:transform 1.2s var(--ml-ease-in-out);transition-delay:calc(var(--i,0) * 120ms + var(--d,0ms))}
+.ml-motion [data-ml-line].is-in::before{transform:scaleX(1)}
+
+.ml-motion [data-ml-clip]{clip-path:inset(0 0 100% 0);transition:clip-path 1.1s var(--ml-ease-in-out);transition-delay:var(--d,0ms)}
+.ml-motion [data-ml-clip].is-in{clip-path:inset(0 0 0 0)}
+.ml-motion [data-ml-clip] .ml-shot,.ml-motion [data-ml-clip] .ml-ph{transform:scale(1.08)}
+.ml-motion [data-ml-clip].is-in .ml-shot,.ml-motion [data-ml-clip].is-in .ml-ph{transform:none}
+
+/* Eticheta care urmărește mouse-ul peste proiecte (doar desktop) */
+.ml-cursor{position:fixed;left:0;top:0;z-index:995;pointer-events:none}
+.ml-cursor span{display:flex;align-items:center;justify-content:center;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;background:var(--ml-ink);color:#fff;font:500 14px/1.2 var(--ml-font);text-align:center;opacity:0;transform:scale(.4);transition:opacity .2s ease,transform .35s var(--ml-ease)}
+.ml-cursor.is-on span{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .ml-shot{transition:none}
+  .ml-motion [data-ml-split] .ml-w__i,
+  .ml-motion [data-ml-reveal],.ml-motion [data-ml-reveal="right"],
+  .ml-motion [data-ml-stagger]>*{transform:none;transition:opacity .3s ease}
+  .ml-motion [data-ml-line]::before{transform:none;transition:none}
+  .ml-motion [data-ml-clip]{clip-path:none;opacity:0;transition:opacity .3s ease}
+  .ml-motion [data-ml-clip].is-in{opacity:1}
+  .ml-motion [data-ml-clip] .ml-shot,.ml-motion [data-ml-clip] .ml-ph{transform:none}
+  .ml-cursor{display:none}
+}
+
+/* Formularul popup Tilda (BF502N): colțuri și font potrivite cu designul.
+   Culorile le setezi din setările blocului în Tilda (vezi instrucțiunile). */
+.t-popup .t-submit{border-radius:8px!important;font-family:var(--ml-font)!important;font-weight:500!important}
+.t-popup .t-input,.t-popup .t-select{border-radius:8px!important}
+.t-popup .t-popup__container{border-radius:20px!important;overflow:hidden}
+</style>
+<script>
+(function () {
+  if (window.__mlInit) return;
+  window.__mlInit = true;
+  var html = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canObserve = 'IntersectionObserver' in window;
+  if (canObserve) html.classList.add('ml-motion');
+
+  /* ---------- Evenimente pentru Google Tag Manager ---------- */
+  function track(name, data) {
+    window.dataLayer = window.dataLayer || [];
+    var o = { event: name };
+    if (data) for (var k in data) o[k] = data[k];
+    window.dataLayer.push(o);
+  }
+  window.mlTrack = track;
+
+  // Selectează automat pachetul în formularul popup, după butonul apăsat
+  function preselect(pack) {
+    if (!pack) return;
+    setTimeout(function () {
+      var sels = document.querySelectorAll('.t-popup select, .ml-mock select');
+      for (var i = 0; i < sels.length; i++) {
+        var s = sels[i];
+        for (var j = 0; j < s.options.length; j++) {
+          if (s.options[j].text.indexOf(pack) === 0) {
+            s.selectedIndex = j;
+            s.dispatchEvent(new Event('change', { bubbles: true }));
+            break;
+          }
+        }
+      }
+    }, 60);
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var loc = { ml_loc: a.getAttribute('data-ml-cta') || '' };
+    if (href.indexOf('wa.me') > -1) track('ml_whatsapp_click', loc);
+    else if (href.indexOf('tel:') === 0) track('ml_phone_click', loc);
+    else if (href.indexOf('#popup:') === 0) {
+      track('ml_cta_click', loc);
+      preselect(a.getAttribute('data-ml-pack'));
+    }
+  }, true);
+
+  if (!canObserve) return;
+
+  /* ---------- Împarte textul în cuvinte sau litere ---------- */
+  function split(el) {
+    if (el.__mlSplit) return;
+    el.__mlSplit = true;
+    var chars = el.getAttribute('data-ml-split') === 'chars';
+    if (chars && !el.hasAttribute('aria-label')) el.setAttribute('aria-label', el.textContent.trim());
+    var n = 0;
+    function wrap(content) {
+      var outer = document.createElement('span');
+      var inner = document.createElement('span');
+      outer.className = 'ml-w';
+      inner.className = 'ml-w__i';
+      inner.style.setProperty('--i', n++);
+      if (chars) outer.setAttribute('aria-hidden', 'true');
+      if (typeof content === 'string') inner.textContent = content;
+      else inner.appendChild(content);
+      outer.appendChild(inner);
+      return outer;
+    }
+    Array.prototype.slice.call(el.childNodes).forEach(function (node) {
+      if (node.nodeType === 3) {
+        var frag = document.createDocumentFragment();
+        var parts = chars ? Array.from(node.textContent) : node.textContent.split(/(\s+)/);
+        parts.forEach(function (p) {
+          if (!p) return;
+          if (/^\s+$/.test(p)) frag.appendChild(document.createTextNode(' '));
+          else frag.appendChild(wrap(p));
+        });
+        el.replaceChild(frag, node);
+      } else if (node.nodeType === 1 && node.tagName !== 'BR') {
+        // un <br> rămâne neatins, ca ruperile de rând puse manual să funcționeze
+        var mark = document.createComment('');
+        el.replaceChild(mark, node);
+        el.replaceChild(wrap(node), mark);
+      }
+    });
+  }
+
+  /* ---------- Cifre care numără de la 0 ---------- */
+  function prepCount(el) {
+    if (reduce || el.__mlCount) return;
+    el.__mlCount = true;
+    el.textContent = (el.getAttribute('data-ml-prefix') || '') + (el.getAttribute('data-ml-from') || '0') + (el.getAttribute('data-ml-suffix') || '');
+  }
+  function runCount(el) {
+    if (!el.__mlCount) return;
+    var to = parseFloat(el.getAttribute('data-ml-count')) || 0;
+    var from = parseFloat(el.getAttribute('data-ml-from')) || 0;
+    var prefix = el.getAttribute('data-ml-prefix') || '';
+    var suffix = el.getAttribute('data-ml-suffix') || '';
+    var dur = 1600, start = null;
+    function step(t) {
+      if (start === null) start = t;
+      var p = Math.min(1, (t - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 4);
+      el.textContent = prefix + Math.round(from + (to - from) * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------- Declanșare la derulare (o singură dată) ---------- */
+  var SEL = '[data-ml-split],[data-ml-reveal],[data-ml-stagger],[data-ml-line],[data-ml-clip],[data-ml-count]';
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('is-in');
+      if (en.target.hasAttribute('data-ml-count')) runCount(en.target);
+      io.unobserve(en.target);
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0 });
+
+  function scan(root) {
+    root = root || document;
+    Array.prototype.forEach.call(root.querySelectorAll('[data-ml-split]'), split);
+    Array.prototype.forEach.call(root.querySelectorAll('[data-ml-stagger]'), function (c) {
+      Array.prototype.forEach.call(c.children, function (ch, i) { ch.style.setProperty('--i', i); });
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('[data-ml-count]'), prepCount);
+    Array.prototype.forEach.call(root.querySelectorAll(SEL), function (el) {
+      if (el.__mlObs) return;
+      el.__mlObs = true;
+      io.observe(el);
+    });
+  }
+  window.mlScan = scan;
+
+  /* ---------- Eticheta care urmărește mouse-ul ---------- */
+  function cursor() {
+    if (reduce || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    var box = document.createElement('div');
+    box.className = 'ml ml-cursor';
+    box.setAttribute('aria-hidden', 'true');
+    box.innerHTML = '<span></span>';
+    document.body.appendChild(box);
+    var label = box.firstChild;
+    var x = -200, y = -200, tx = -200, ty = -200, raf = null;
+    function loop() {
+      x += (tx - x) * 0.2;
+      y += (ty - y) * 0.2;
+      box.style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)';
+      raf = (Math.abs(tx - x) > 0.2 || Math.abs(ty - y) > 0.2) ? requestAnimationFrame(loop) : null;
+    }
+    document.addEventListener('mousemove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      if (!raf) raf = requestAnimationFrame(loop);
+    }, { passive: true });
+    document.addEventListener('mouseover', function (e) {
+      var t = e.target.closest ? e.target.closest('[data-ml-cursor]') : null;
+      if (t) label.textContent = t.getAttribute('data-ml-cursor');
+      box.classList.toggle('is-on', !!t);
+    });
+    document.addEventListener('mouseleave', function () { box.classList.remove('is-on'); });
+  }
+
+  /* Pornim după ce s-a încărcat fontul, ca titlurile să nu sară în timpul animației */
+  var started = false;
+  function start() {
+    if (started) return;
+    started = true;
+    scan(document);
+    cursor();
+  }
+  function ready() {
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { setTimeout(start, 0); });
+    setTimeout(start, 800);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ready);
+  else ready();
+  // Plasă de siguranță: dacă ceva nu pornește, pagina rămâne vizibilă
+  setTimeout(function () { if (!started) html.classList.remove('ml-motion'); }, 3000);
+})();
+</script>

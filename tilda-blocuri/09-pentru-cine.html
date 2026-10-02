@@ -1,0 +1,54 @@
+<!--
+  MoreLeads · Bloc 09 · PENTRU CINE E, PENTRU CINE NU
+  Două carduri: cine se potrivește și ce nu facem. A spune și ce nu faceți e unul dintre cele mai credibile lucruri de pe o pagină de vânzare
+  și reduce cererile nepotrivite.
+-->
+<section class="ml ml-fit ml-sec" aria-labelledby="ml-fit-t">
+  <div class="ml-wrap">
+    <div class="ml-head">
+      <h2 class="ml-h2" id="ml-fit-t" data-ml-split>Pentru cine e, pentru cine nu</h2>
+      <p data-ml-reveal style="--d:150ms">Lucrăm cel mai bine cu afaceri pe care oamenii le caută deja în Google. Îți spunem sincer, de la prima discuție, dacă nu suntem potriviți.</p>
+    </div>
+
+    <div class="ml-fit__grid" data-ml-stagger style="--ml-st:120ms">
+      <article class="ml-card ml-card--lav ml-fit__yes">
+        <span class="ml-card__label">Potrivit pentru</span>
+        <h3 class="ml-card__title">Servicii locale cu cerere în Google</h3>
+        <ul class="ml-fit__list">
+          <li>Clinici și cabinete medicale</li>
+          <li>Construcții, renovări, instalații</li>
+          <li>Curățenie, reparații, servicii pentru casă</li>
+          <li>Școli, cursuri, antrenamente</li>
+          <li>Turism, transport, evenimente</li>
+          <li>Servicii pentru companii: contabilitate, juridic, consultanță</li>
+        </ul>
+        <p class="ml-card__text ml-fit__note">Afaceri care vor cereri, nu doar o carte de vizită online.</p>
+      </article>
+      <article class="ml-card ml-fit__no">
+        <span class="ml-card__label">Nu facem</span>
+        <h3 class="ml-card__title">Proiecte mari sau complexe</h3>
+        <ul class="ml-fit__list">
+          <li>Magazine online cu sute de produse</li>
+          <li>Portaluri și platforme cu conturi de utilizator</li>
+          <li>Aplicații mobile</li>
+          <li>Site-uri cu zeci de pagini</li>
+        </ul>
+        <p class="ml-card__text ml-fit__note">Dacă ai nevoie de așa ceva, îți spunem la prima discuție și, dacă putem, îți recomandăm pe cineva.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+.ml-fit{background:var(--ml-bg)}
+.ml-fit__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--ml-gap)}
+.ml-fit .ml-card__title{margin-top:28px;font-size:22px}
+.ml-fit__list{margin-top:18px;display:grid;gap:0}
+.ml-fit__list li{padding:11px 0;border-top:1px solid rgba(28,26,69,.12);font-size:16px;line-height:1.45;color:var(--ml-ink)}
+.ml-fit__no .ml-fit__list li{border-top-color:var(--ml-line);color:var(--ml-text)}
+.ml-fit__note{margin-top:auto;padding-top:20px}
+@media (max-width:760px){
+  .ml-fit__grid{grid-template-columns:minmax(0,1fr)}
+  .ml-fit .ml-card__title{margin-top:20px;font-size:20px}
+}
+</style>

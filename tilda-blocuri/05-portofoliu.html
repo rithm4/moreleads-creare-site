@@ -1,0 +1,204 @@
+<!--
+  MoreLeads · Bloc 05 · PORTOFOLIU
+  ✏️ Editezi DOAR lista ML_PROIECTE de mai jos (în <script>):
+     nume     – numele clientului / proiectului
+     domeniu  – domeniul de activitate (ex. „Clinică dentară”)
+     tip      – „Landing page”, „Site de prezentare” sau „Landing + Google Ads” (din el se fac filtrele)
+     url      – adresa site-ului live (https://...)
+     desktop  – link spre captura desktop (ideal: toată pagina, lățime 1440 px)
+     mobil    – link spre captura de mobil (ideal: toată pagina, lățime 390 px)
+     video    – opțional: clip scurt (MP4, fără sunet) cu primul ecran; în primul ecran (blocul 02) rulează în locul capturii
+     poster   – opțional: imaginea afișată până pornește clipul
+  Primul proiect apare și în primul ecran (blocul 02). Pune primele proiectele cele mai frumoase.
+  Grila alternează automat carduri mari, late și mici. Capturile lungi se derulează la hover.
+-->
+<section class="ml ml-pf ml-sec" id="portofoliu" aria-labelledby="ml-pf-t">
+  <div class="ml-wrap">
+    <div class="ml-head">
+      <div>
+        <h2 class="ml-h2" id="ml-pf-t" data-ml-split>Portofoliu</h2>
+        <p class="ml-pf__sub" data-ml-reveal style="--d:150ms">Site-uri făcute de noi, toate online. Apasă pe un proiect ca să-l deschizi.</p>
+      </div>
+      <div class="ml-pf__filters" role="group" aria-label="Filtrează proiectele" data-ml-filters data-ml-reveal style="--d:250ms"></div>
+    </div>
+    <div class="ml-pf__grid" data-ml-grid></div>
+    <div class="ml-pf__more">
+      <button class="ml-btn ml-pf__morebtn" type="button" data-ml-more hidden>Toate proiectele</button>
+    </div>
+  </div>
+</section>
+
+<style>
+.ml-pf{background:var(--ml-bg)}
+.ml-pf__sub{margin-top:12px;max-width:440px;font-size:16px;color:var(--ml-mute)}
+.ml .ml-pf__filters{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:12px;background:var(--ml-muted)}
+.ml .ml-pf__filters:empty{display:none}
+.ml .ml-pf__filter{height:38px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:500;color:var(--ml-text);transition:background-color .2s ease,color .2s ease,box-shadow .2s ease}
+.ml .ml-pf__filter:hover{color:var(--ml-ink)}
+.ml .ml-pf__filter[aria-pressed="true"]{background:#fff;color:var(--ml-ink);box-shadow:0 1px 3px rgba(28,26,69,.14)}
+.ml .ml-pf__filter span{margin-left:6px;color:var(--ml-mute);font-variant-numeric:tabular-nums}
+
+.ml-pf__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:300px;grid-auto-flow:dense;gap:var(--ml-gap)}
+.ml-pj{padding:8px}
+.ml-pj[hidden]{display:none}
+.ml-pj--xl{grid-column:span 2;grid-row:span 2}
+.ml-pj--w{grid-column:span 2}
+.ml-pj__link{display:flex;flex-direction:column;height:100%;color:var(--ml-ink)}
+.ml-pj__stage{position:relative;flex:1;min-height:0}
+.ml-pj__desk{position:absolute;inset:0}
+.ml-pj__mob{display:none;position:absolute;right:20px;bottom:20px;width:19%;aspect-ratio:9 / 19.5;border:4px solid var(--ml-card);border-radius:16px;box-shadow:0 20px 40px -20px rgba(17,17,19,.45);transition:transform .5s var(--ml-ease)}
+.ml-pj--xl .ml-pj__mob{display:block}
+.ml-pj__mob .ml-shot{transition:object-position 4s cubic-bezier(0.45,0,0.55,1),transform 1.4s var(--ml-ease)}
+.ml-pj__cap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 10px 6px 12px}
+.ml-pj__name{font-size:18px;font-weight:600;line-height:1.25;letter-spacing:-.02em}
+.ml-pj--xl .ml-pj__name{font-size:22px}
+.ml-pj__info{margin-top:2px;font-size:14px;color:var(--ml-mute)}
+.ml-pj__go{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:background-color .25s ease,color .25s ease}
+.ml-pj__soon{flex-shrink:0;font-size:14px;color:var(--ml-mute)}
+
+.ml-pf__more{margin-top:20px;display:flex;justify-content:center}
+.ml-pf__more .ml-btn[hidden]{display:none}
+.ml-pf__morebtn{background:var(--ml-card);color:var(--ml-ink)}
+.ml-pf__morebtn:hover{background:var(--ml-muted)}
+
+@media (hover:hover) and (pointer:fine){
+  .ml-pj:hover .ml-shot{object-position:50% 100%}
+  .ml-pj:hover .ml-pj__mob{transform:translateY(-8px)}
+  .ml-pj:hover .ml-pj__go{background:var(--ml-ink);color:#fff}
+  .ml-motion .ml-pj__link{cursor:none}
+}
+@media (max-width:1024px){
+  .ml-pf__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ml-pj--w{grid-column:span 1}
+}
+@media (max-width:640px){
+  .ml .ml-pf__filters{display:flex;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .ml .ml-pf__filters::-webkit-scrollbar{display:none}
+  .ml .ml-pf__filter{flex-shrink:0;height:44px;padding:0 12px}
+  .ml .ml-pf__filter span{display:none}
+  .ml-pf__grid{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}
+  .ml-pj--xl,.ml-pj--w{grid-column:auto;grid-row:auto}
+  .ml-pj__stage{flex:none;aspect-ratio:16 / 10.5}
+  .ml-pj__mob{right:12px;bottom:12px;border-width:3px;border-radius:12px}
+  .ml-pj__name,.ml-pj--xl .ml-pj__name{font-size:18px}
+  .ml-pf__more .ml-btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){.ml-motion .ml-pj__link{cursor:pointer}}
+</style>
+<script>
+/* ✏️ LISTA DE PROIECTE: înlocuiește exemplele cu proiectele tale */
+window.ML_PROIECTE = [
+  // capturile din folderul portofoliu/ merg în previzualizare; în Tilda pui în locul lor linkurile de pe static.tildacdn.com
+  { nume: 'Dent Expert · Implant diaspora', domeniu: 'Clinică stomatologică, Buzău', tip: 'Landing page', url: 'https://implant.dentexpertbuzau.ro/oferte/diaspora', desktop: 'portofoliu/dentexpert-diaspora-desktop.webp', mobil: 'portofoliu/dentexpert-diaspora-mobil.webp',
+    video: 'portofoliu/dentexpert-diaspora-video.mp4', poster: 'portofoliu/dentexpert-diaspora-poster.webp' },
+  { nume: 'K&O Rechtsanwälte', domeniu: 'Avocați, Germania', tip: 'Landing page', url: 'https://ko-legal.eu/', desktop: 'portofoliu/kolegal-desktop.webp', mobil: 'portofoliu/kolegal-mobil.webp' },
+  { nume: 'Impladent', domeniu: 'Implanturi dentare, București', tip: 'Landing page', url: 'https://moreleads.ro/impladent', desktop: 'portofoliu/impladent-desktop.webp', mobil: 'portofoliu/impladent-mobil.webp' },
+  { nume: 'Pretora', domeniu: 'Drepturi și acte pentru românii din Europa', tip: 'Site de prezentare', url: 'https://pretora.de/', desktop: 'portofoliu/pretora-desktop.webp', mobil: 'portofoliu/pretora-mobil.webp' },
+  { nume: 'Dr. Rafaela Medveșan', domeniu: 'Medic stomatolog, București', tip: 'Landing page', url: 'https://drrafaela.ro/2', desktop: 'portofoliu/drrafaela-desktop.webp', mobil: 'portofoliu/drrafaela-mobil.webp' },
+  { nume: 'Kirman', domeniu: 'Hidroizolații prin injectare, România', tip: 'Landing page', url: 'https://moreleads.ro/kirman', desktop: 'portofoliu/kirman-desktop.webp', mobil: 'portofoliu/kirman-mobil.webp' },
+  { nume: 'Reflekt Bau', domeniu: 'Renovări, Germania', tip: 'Site de prezentare', url: 'https://reflektbau.de/', desktop: 'portofoliu/reflektbau-desktop.webp', mobil: 'portofoliu/reflektbau-mobil.webp' },
+  { nume: 'MoreLeads', domeniu: 'Agenție de marketing digital, Chișinău', tip: 'Site de prezentare', url: 'https://moreleads.md/', desktop: 'portofoliu/moreleads-md-desktop.webp', mobil: 'portofoliu/moreleads-md-mobil.webp' },
+  { nume: 'Proiect 7',  domeniu: 'Domeniu de activitate', tip: 'Site de prezentare', url: '', desktop: '', mobil: '' },
+  { nume: 'Proiect 8',  domeniu: 'Domeniu de activitate', tip: 'Landing page',       url: '', desktop: '', mobil: '' }
+];
+
+(function () {
+  var VIZIBILE_LA_INCEPUT = 5; // o grupă completă: mare, trei mici, lat
+  var root = document.getElementById('portofoliu');
+  if (!root) return;
+  var grid = root.querySelector('[data-ml-grid]');
+  var filters = root.querySelector('[data-ml-filters]');
+  var moreBtn = root.querySelector('[data-ml-more]');
+  var list = window.ML_PROIECTE || [];
+  var active = 'Toate';
+  var expanded = false;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function shot(src, alt, label) {
+    return src
+      ? '<img class="ml-shot" src="' + esc(src) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async">'
+      : '<div class="ml-ph">' + esc(label) + '</div>';
+  }
+  var OUT = '<svg class="ml-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M5 4h7v7"/></svg>';
+
+  function card(p) {
+    var inner =
+      '<div class="ml-pj__stage">' +
+        '<div class="ml-shot-box ml-pj__desk" data-ml-clip>' + shot(p.desktop, 'Site-ul ' + p.nume + ' pe desktop', 'Captură desktop') + '</div>' +
+        '<div class="ml-shot-box ml-pj__mob" data-ml-clip style="--d:280ms">' + shot(p.mobil, 'Site-ul ' + p.nume + ' pe telefon', '') + '</div>' +
+      '</div>' +
+      '<div class="ml-pj__cap"><div><h3 class="ml-pj__name">' + esc(p.nume) + '</h3>' +
+      '<p class="ml-pj__info">' + esc([p.domeniu, p.tip].filter(Boolean).join(' · ')) + '</p></div>' +
+      (p.url ? '<span class="ml-pj__go">' + OUT + '</span>' : '<span class="ml-pj__soon">În curând</span>') + '</div>';
+    var link = p.url
+      ? '<a class="ml-pj__link" href="' + esc(p.url) + '" target="_blank" rel="noopener" data-ml-cursor="Vezi site-ul">' + inner + '</a>'
+      : '<div class="ml-pj__link" data-ml-cursor="În curând">' + inner + '</div>';
+    return '<article class="ml-card ml-pj" data-tip="' + esc(p.tip) + '">' + link + '</article>';
+  }
+
+  // Tiparul grilei, pe rând: mare (2×2), mic, mic, mic, lat (2×1), apoi se repetă
+  function sizeFor(n) {
+    var k = n % 5;
+    return k === 0 ? 'ml-pj--xl' : k === 4 ? 'ml-pj--w' : '';
+  }
+
+  function apply(animate) {
+    var cards = grid.querySelectorAll('.ml-pj');
+    var shown = 0, matching = 0, k = 0;
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i];
+      var match = active === 'Toate' || c.getAttribute('data-tip') === active;
+      if (match) matching++;
+      var visible = match && (expanded || shown < VIZIBILE_LA_INCEPUT);
+      var wasHidden = c.hidden;
+      c.hidden = !visible;
+      c.classList.remove('ml-pj--xl', 'ml-pj--w');
+      if (visible) {
+        var size = sizeFor(shown);
+        if (size) c.classList.add(size);
+        shown++;
+      }
+      // La schimbarea filtrului, proiectele apar lin, unul după altul, în loc să sară
+      if (animate && visible && c.animate) {
+        c.animate(
+          reduce ? [{ opacity: 0 }, { opacity: 1 }]
+                 : [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }],
+          { duration: reduce ? 200 : 500, delay: reduce ? 0 : 50 * k++, easing: 'cubic-bezier(0.23,1,0.32,1)', fill: 'backwards' }
+        );
+      }
+    }
+    moreBtn.hidden = matching - shown <= 0;
+    moreBtn.textContent = 'Toate proiectele (' + matching + ')';
+  }
+
+  grid.innerHTML = list.map(card).join('');
+
+  var types = [];
+  list.forEach(function (p) { if (p.tip && types.indexOf(p.tip) < 0) types.push(p.tip); });
+  if (types.length > 1) {
+    var btns = [{ t: 'Toate', n: list.length }].concat(types.map(function (t) {
+      return { t: t, n: list.filter(function (p) { return p.tip === t; }).length };
+    }));
+    filters.innerHTML = btns.map(function (b) {
+      return '<button type="button" class="ml-pf__filter" data-f="' + esc(b.t) + '" aria-pressed="' + (b.t === active) + '">' + esc(b.t) + '<span>' + b.n + '</span></button>';
+    }).join('');
+    filters.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-f]');
+      if (!b || b.getAttribute('data-f') === active) return;
+      active = b.getAttribute('data-f');
+      expanded = false;
+      var all = filters.querySelectorAll('[data-f]');
+      for (var i = 0; i < all.length; i++) all[i].setAttribute('aria-pressed', String(all[i] === b));
+      apply(true);
+    });
+  }
+
+  moreBtn.addEventListener('click', function () { expanded = true; apply(true); });
+  apply();
+})();
+</script>

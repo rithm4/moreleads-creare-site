@@ -1,0 +1,101 @@
+<!--
+  MoreLeads · Bloc 04 · REZULTATE
+  Cifrele sunt cele publicate pe moreleads.md.
+-->
+<section class="ml ml-rs ml-sec" id="rezultate" aria-labelledby="ml-rs-t">
+  <div class="ml-wrap">
+    <div class="ml-head">
+      <h2 class="ml-h2" id="ml-rs-t" data-ml-split>Rezultate din proiectele clienților</h2>
+      <p data-ml-reveal style="--d:150ms">O cerere înseamnă un apel, un mesaj pe WhatsApp sau un formular trimis de un om care vrea oferta ta. Le numărăm pe toate în Google Analytics și le vezi și tu.</p>
+    </div>
+
+    <div class="ml-bento" data-ml-stagger style="--ml-st:90ms">
+      <article class="ml-card ml-card--lav ml-c2 ml-r2 ml-rs__main">
+        <span class="ml-card__label">Dent Expert Trend, clinică stomatologică, Buzău · Site + Google Ads</span><!-- DE CONFIRMAT: pachetul -->
+        <div class="ml-rs__row">
+          <div>
+            <p class="ml-card__big ml-rs__x">×3</p>
+            <p class="ml-card__text ml-rs__lead">Venitul lunar a crescut de la aproximativ 200.000 la peste 600.000 de lei românești în 8 luni.</p>
+          </div>
+          <div class="ml-rs__chart" role="img" aria-label="Venit lunar: aproximativ 200.000 de lei (RON) la început, peste 600.000 de lei după 8 luni">
+            <div class="ml-rs__col">
+              <span class="ml-rs__val">~200 mii</span>
+              <span class="ml-rs__bar" style="height:33%"></span>
+              <span class="ml-rs__cap">La început</span>
+            </div>
+            <div class="ml-rs__col">
+              <span class="ml-rs__val">600+ mii</span>
+              <span class="ml-rs__bar ml-rs__bar--hi" style="height:100%"></span>
+              <span class="ml-rs__cap">După 8 luni</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="ml-card">
+        <span class="ml-card__label">Firmă de curățenie, Chișinău · Landing + Google Ads</span>
+        <div class="ml-card__foot">
+          <p class="ml-card__big" data-ml-count="283">283</p>
+          <p class="ml-card__text">cereri în primele 7 zile. Cost pe cerere: 1,78 $, la un buget de 500 $ pe lună<!-- DE CONFIRMAT: bugetul --></p>
+        </div>
+      </article>
+
+      <article class="ml-card">
+        <span class="ml-card__label">Companie de construcții · Landing + Google Ads</span><!-- DE CONFIRMAT: pachetul -->
+        <div class="ml-card__foot">
+          <p class="ml-card__big" data-ml-count="1000" data-ml-suffix="+">1.000+</p>
+          <p class="ml-card__text">cereri pentru design interior în 30 de zile</p>
+        </div>
+      </article>
+
+      <article class="ml-card ml-card--ink">
+        <span class="ml-card__label">Antrenamente online · Landing + Meta Ads</span><!-- DE CONFIRMAT: pachetul -->
+        <div class="ml-card__foot">
+          <p class="ml-card__big" data-ml-count="300" data-ml-suffix="+">300+</p>
+          <p class="ml-card__text">cereri în primele 4 zile</p>
+        </div>
+      </article>
+
+      <article class="ml-card ml-card--lime">
+        <span class="ml-card__label">Agenție de turism · Site de prezentare</span><!-- DE CONFIRMAT: pachetul -->
+        <div class="ml-card__foot">
+          <p class="ml-card__big" data-ml-count="410" data-ml-from="290" data-ml-suffix=" €">410 €</p>
+          <p class="ml-card__text">valoarea medie a unei rezervări, față de 290 € înainte de noul site</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+.ml-rs{background:var(--ml-bg)}
+.ml-rs__main{padding:32px}
+.ml-rs__row{margin-top:auto;display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:32px;align-items:end}
+.ml-rs__x{font-size:clamp(88px,10vw,148px);line-height:.85}
+.ml-rs__lead{margin-top:20px;max-width:300px;font-size:16px}
+.ml-rs__chart{height:260px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:end}
+.ml-rs__col{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;gap:8px}
+.ml-rs__val{font-size:14px;font-weight:600;color:var(--ml-ink);font-variant-numeric:tabular-nums}
+.ml-rs__bar{display:block;border-radius:8px 8px 4px 4px;background:rgba(255,255,255,.55);box-shadow:inset 0 1px 0 rgba(255,255,255,.8);transform-origin:50% 100%}
+.ml-rs__bar--hi{background:var(--ml-ink);box-shadow:none}
+.ml-rs__cap{font-size:13px;color:var(--ml-ink)}
+.ml-rs .ml-card__big{font-size:clamp(48px,4.8vw,72px)}
+.ml-rs .ml-rs__x{font-size:clamp(88px,10vw,148px)}
+
+/* Barele cresc când apare cardul */
+.ml-motion .ml-rs__bar{transform:scaleY(0);transition:transform 1.1s var(--ml-ease)}
+.ml-motion .ml-rs__col:nth-child(2) .ml-rs__bar{transition-delay:.25s}
+.ml-motion .is-in .ml-rs__bar{transform:none}
+
+@media (max-width:1024px){
+  .ml-rs__row{grid-template-columns:minmax(0,1fr) 160px}
+  .ml-rs__main{grid-row:auto;min-height:360px}
+}
+@media (max-width:640px){
+  .ml-rs__main{padding:22px}
+  .ml-rs__row{grid-template-columns:minmax(0,1fr);gap:24px;margin-top:40px}
+  .ml-rs__chart{height:180px;max-width:240px}
+  .ml-rs .ml-card:not(.ml-rs__main){min-height:190px}
+}
+@media (prefers-reduced-motion:reduce){.ml-motion .ml-rs__bar{transform:none;transition:none}}
+</style>

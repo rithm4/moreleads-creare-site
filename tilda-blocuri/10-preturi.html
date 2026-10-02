@@ -1,0 +1,110 @@
+<!--
+  MoreLeads · Bloc 10 · PREȚURI
+  Butoanele deschid formularul popup și selectează automat pachetul (atributul data-ml-pack
+  trebuie să fie începutul textului opțiunii din câmpul „Pachet” al formularului Tilda).
+-->
+<section class="ml ml-pr ml-sec" id="preturi" aria-labelledby="ml-pr-t">
+  <div class="ml-wrap">
+    <div class="ml-head">
+      <h2 class="ml-h2" id="ml-pr-t" data-ml-split>Prețuri fixe, scrise în contract</h2>
+      <p data-ml-reveal style="--d:150ms">Suma din ofertă nu se schimbă pe parcurs. Plătești jumătate la început și jumătate la lansare. Prețurile sunt în euro, fără TVA.</p><!-- DE CONFIRMAT: TVA -->
+    </div>
+
+    <div class="ml-pr__plans" data-ml-stagger style="--ml-st:110ms">
+      <article class="ml-card ml-plan">
+        <span class="ml-card__label">Landing Start</span>
+        <p class="ml-plan__price"><span class="ml-num">349</span> €</p>
+        <p class="ml-plan__for">Pentru un singur serviciu sau o singură ofertă.</p>
+        <ul class="ml-plan__list">
+          <li>O pagină, până la 8 secțiuni</li>
+          <li>Texte de vânzare scrise de noi</li>
+          <li>Formular, WhatsApp și buton de apel</li>
+          <li>Google Analytics, Meta Pixel și conversii Google Ads</li>
+          <li>SEO tehnic de bază</li>
+          <li>Gata în 7 zile</li>
+        </ul>
+        <a class="ml-btn ml-plan__cta ml-plan__cta--muted" href="#popup:schita" data-ml-cta="pachet-start" data-ml-pack="Landing Start">Alege Landing Start</a>
+      </article>
+
+      <article class="ml-card ml-card--ink ml-plan ml-plan--main">
+        <div class="ml-plan__top">
+          <span class="ml-card__label">Landing + Google Ads</span>
+          <span class="ml-plan__tag">Recomandăm</span>
+        </div>
+        <p class="ml-plan__price"><span class="ml-num">590</span> €</p>
+        <p class="ml-plan__for">Pentru cereri încă din prima lună.</p>
+        <ul class="ml-plan__list">
+          <li>Tot ce include Landing Start</li>
+          <li>Campanie Google Ads configurată de noi</li>
+          <li>Prima lună de optimizare a campaniei inclusă</li>
+          <li>Apoi 249 €/lună, doar dacă vrei să continuăm</li>
+          <li>Buget de reclamă recomandat: de la 300 €/lună, plătit direct la Google</li><!-- DE CONFIRMAT: bugetul -->
+        </ul>
+        <a class="ml-btn ml-btn--accent ml-plan__cta" href="#popup:schita" data-ml-cta="pachet-ads" data-ml-pack="Landing + Google Ads">Alege Landing + Google Ads</a>
+      </article>
+
+      <article class="ml-card ml-plan">
+        <span class="ml-card__label">Site de prezentare</span>
+        <p class="ml-plan__price"><span class="ml-num">790</span> €</p>
+        <p class="ml-plan__for">Pentru companii cu mai multe servicii.</p>
+        <ul class="ml-plan__list">
+          <li>Tot ce include Landing Start, pe mai multe pagini</li>
+          <li>Până la 8 pagini, cu meniu</li>
+          <li>O pagină pentru fiecare serviciu</li>
+          <li>Secțiune de blog</li>
+          <li>SEO tehnic: titluri, viteză, indexare</li>
+          <li>Te învățăm să-l editezi singur</li>
+          <li>Gata în 14 zile</li>
+        </ul>
+        <a class="ml-btn ml-plan__cta ml-plan__cta--muted" href="#popup:schita" data-ml-cta="pachet-site" data-ml-pack="Site de prezentare">Alege Site de prezentare</a>
+      </article>
+    </div>
+
+    <div class="ml-pr__notes" data-ml-stagger style="--ml-st:70ms;--d:200ms">
+      <div class="ml-card ml-card--muted"><b>Hosting și administrare</b><p>20 €/lună, opțional: hosting, backup, actualizări și modificări mici de text.</p></div>
+      <div class="ml-card ml-card--muted"><b>Domeniul</b><p>Aproximativ 15 €/an, plătit direct la registrator, pe numele tău.</p></div><!-- DE CONFIRMAT: prețul -->
+      <div class="ml-card ml-card--muted"><b>A doua limbă</b><p>Rusă sau engleză: + 60 € per pagină tradusă.</p></div><!-- DE CONFIRMAT: prețul -->
+      <div class="ml-card ml-card--muted"><b>Modificări mai mari după lansare</b><p>Secțiuni sau pagini noi: la cerere, cu prețul spus înainte.</p></div>
+      <div class="ml-card ml-card--muted"><b>Bugetul de reclamă</b><p>Nu trece prin noi și nu luăm comision din el.</p></div>
+      <a class="ml-card ml-card--muted ml-pr__other" href="#popup:schita" data-ml-cta="oferta-separata" data-ml-pack="Altceva"><b>Magazin online?</b><p>Cere o ofertă separată →</p></a>
+    </div>
+  </div>
+</section>
+
+<style>
+.ml-pr{background:var(--ml-bg)}
+.ml-pr__plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--ml-gap);align-items:stretch}
+.ml-plan{padding:28px}
+.ml-plan__top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ml-plan__tag{margin:-4px 0;padding:4px 10px;border-radius:6px;background:var(--ml-lime);font-size:13px;font-weight:600;line-height:1.3;color:var(--ml-ink)}
+.ml-plan__price{margin-top:36px;font-size:22px;font-weight:500;color:var(--ml-ink)}
+.ml-plan__price span{font-size:72px;line-height:.9;letter-spacing:-.055em}
+.ml-plan--main .ml-plan__price{color:#fff}
+.ml-plan__for{margin-top:12px;font-size:15px;color:var(--ml-mute)}
+.ml-plan--main .ml-plan__for{color:var(--ml-on-ink)}
+.ml-plan__list{margin-top:28px;flex:1;display:flex;flex-direction:column}
+.ml-plan__list li{padding:11px 0;border-top:1px solid var(--ml-line);font-size:15px;line-height:1.45;color:var(--ml-text)}
+.ml-plan--main .ml-plan__list li{border-top-color:rgba(255,255,255,.12);color:#D9D7F0}
+.ml-plan__cta{margin-top:24px;width:100%}
+.ml-plan__cta--muted{background:#fff;color:var(--ml-ink)}
+.ml-plan__cta--muted:hover{background:var(--ml-muted)}
+
+.ml-pr__notes{margin-top:var(--ml-gap);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--ml-gap)}
+.ml-pr__notes .ml-card{padding:20px 22px}
+.ml-pr__notes b{font-size:15px;font-weight:600;color:var(--ml-ink)}
+.ml-pr__notes p{margin-top:4px;font-size:14px;line-height:1.5;color:var(--ml-mute)}
+.ml-pr__other p{color:var(--ml-ink);font-weight:500}
+@media (hover:hover) and (pointer:fine){.ml-pr__other:hover{background:#E3E3E9}}
+
+@media (max-width:1024px){
+  .ml-pr__plans{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ml-plan--main{order:-1;grid-column:1 / -1}
+  .ml-pr__notes{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .ml-plan{padding:22px}
+  .ml-plan__price span{font-size:60px}
+  .ml-pr__plans{grid-template-columns:minmax(0,1fr)}
+  .ml-pr__notes{grid-template-columns:minmax(0,1fr)}
+}
+</style>
