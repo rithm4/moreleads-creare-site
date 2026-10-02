@@ -1,7 +1,8 @@
 <!--
   MoreLeads · Bloc 02 · PRIMUL ECRAN
   Cardul mare e un slider cu primele proiecte din lista din blocul 05 (ML_PROIECTE) care au captură, max. 10.
-  Se schimbă singur (6,5 s; 10 s la cele cu clip), se oprește când treci cu mouse-ul. Nu trebuie editat aici.
+  Proiectele cu clip (derularea reală a site-ului) rulează clipul o dată, apoi trece la următorul; cele doar cu captură stau 6,5 s.
+  Cât ții mouse-ul pe card, nu se schimbă (clipul se reia). Nu trebuie editat aici.
 -->
 <section class="ml ml-hero" aria-labelledby="ml-hero-t">
   <div class="ml-wrap">
@@ -252,13 +253,18 @@
         // clipul primului ecran: fără sunet, în buclă, rulează doar cât e slide-ul activ
         var v = document.createElement('video');
         v.className = 'ml-shot ml-hx__video';
-        v.muted = true; v.loop = true; v.playsInline = true;
+        v.muted = true; v.loop = false; v.playsInline = true;
         v.setAttribute('muted', ''); v.setAttribute('playsinline', '');
         v.preload = i === 0 ? 'auto' : 'none';
         if (p.poster) v.poster = p.poster;
         v.src = p.video;
         desk.appendChild(v);
         sl.__video = v;
+        v.addEventListener('ended', function () {
+          if (slides[cur] !== sl) return;
+          if (paused || n < 2 || document.hidden) { try { v.currentTime = 0; } catch (e) {} play(v); }
+          else show(cur + 1);
+        });
       } else {
         img(desk, p.video ? (p.poster || p.desktop) : p.desktop, i === 0);
       }
@@ -322,6 +328,8 @@
         sl.classList.toggle('is-on', on);
         if (sl.__video) {
           if (on) { sl.__video.preload = 'auto'; try { sl.__video.currentTime = 0; } catch (e) {} play(sl.__video); }
+          // clipul proiectului următor începe să se încarce din timp, ca trecerea să nu aibă pauză
+          else if (k === (cur + 1) % n && sl.__video.preload !== 'auto') { sl.__video.preload = 'auto'; sl.__video.load(); }
           else sl.__video.pause();
         }
       });
@@ -343,7 +351,9 @@
     function schedule() {
       clearTimeout(timer);
       if (reduce || paused || n < 2 || document.hidden) return;
-      timer = setTimeout(function () { show(cur + 1); }, list[cur].video ? 10000 : 6500);
+      var v = slides[cur].__video;
+      // cu clip: trecerea o face sfârșitul clipului; timerul e doar o plasă de siguranță dacă clipul nu pornește
+      timer = setTimeout(function () { show(cur + 1); }, v ? Math.max(25000, ((v.duration || 0) + 4) * 1000) : 6500);
     }
     // se oprește cât timp vizitatorul se uită la un proiect (mouse sau tastatură) și când fila e în fundal
     root.addEventListener('mouseenter', function () { paused = true; clearTimeout(timer); });
