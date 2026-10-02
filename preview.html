@@ -840,6 +840,30 @@ a.ml-card{transition:background-color .25s ease}
     stage.addEventListener('click', function (e) { if (swiped) { e.preventDefault(); swiped = false; } });
 
     show(0);
+
+    // Numele și descrierea au lungimi diferite (1 sau 2 rânduri): rezervăm înălțimea celui mai lung proiect,
+    // ca laptopul de dedesubt să nu sară în sus și în jos la fiecare schimbare. Se recalculează la redimensionare.
+    var info = nameEl.parentNode;
+    function lockInfo() {
+      info.setAttribute('aria-live', 'off'); // fără anunțuri pentru cititoarele de ecran cât măsurăm
+      info.style.minHeight = '';
+      var max = 0, keepN = nameEl.textContent, keepM = metaEl.textContent;
+      list.forEach(function (p) {
+        nameEl.textContent = p.nume || '';
+        metaEl.textContent = [p.domeniu, p.tip].filter(Boolean).join(' · ');
+        max = Math.max(max, info.getBoundingClientRect().height);
+      });
+      nameEl.textContent = keepN; metaEl.textContent = keepM;
+      info.style.minHeight = Math.ceil(max) + 'px';
+      info.setAttribute('aria-live', 'polite');
+    }
+    lockInfo();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(lockInfo);
+    var rz, lastW = window.innerWidth;
+    window.addEventListener('resize', function () {
+      if (window.innerWidth === lastW) return; // pe telefon bara browserului schimbă doar înălțimea
+      lastW = window.innerWidth; clearTimeout(rz); rz = setTimeout(lockInfo, 150);
+    });
     function loadRest() { later.forEach(function (f) { f(); }); later = []; }
     if (document.readyState === 'complete') setTimeout(loadRest, 300);
     else window.addEventListener('load', function () { setTimeout(loadRest, 300); });
