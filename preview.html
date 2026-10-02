@@ -616,18 +616,19 @@ a.ml-card{transition:background-color .25s ease}
 .ml-hx__name{display:block;margin-top:4px;font-size:20px;font-weight:600;letter-spacing:-.02em}
 .ml-hx__go{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;transition:background-color .25s ease,color .25s ease}
 .ml-hx__meta{display:block;margin-top:2px;font-size:14px;color:var(--ml-mute)}
-/* machetă de laptop desenată din CSS: ramă închisă, cameră, ecran 16:10 (ca capturile și clipurile), bază argintie */
+/* machetă MacBook Pro desenată din CSS: ramă neagră subțire cu notch pentru cameră, ecran 16:10 (ca capturile și clipurile),
+   colțurile de sus rotunjite, balama închisă și baza de aluminiu subțire cu adâncitura de deschidere */
 .ml-hx__device{position:relative;flex:1;display:flex;align-items:center;justify-content:center;padding:12px 0 68px;border-radius:var(--ml-r-in);background:radial-gradient(62% 58% at 50% 44%,rgba(201,184,255,.6) 0%,rgba(201,184,255,0) 72%)}
 .ml-hx__laptop{position:relative;width:86%}
-.ml-hx__lid{position:relative;padding:7px 7px 8px;border-radius:11px 11px 5px 5px;background:linear-gradient(180deg,#1E1E22 0%,#0C0C0F 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 28px 50px -28px rgba(17,17,19,.55)}
-.ml-hx__lid::before{content:"";position:absolute;top:2px;left:50%;width:3px;height:3px;margin-left:-1.5px;border-radius:50%;background:#34343C}
-.ml-hx__stage{position:relative;display:block;aspect-ratio:16 / 10;border-radius:4px;overflow:hidden;background:#fff;touch-action:pan-y}
-.ml-hx__base{position:relative;display:block;width:114%;height:14px;margin-left:-7%;border-radius:2px 2px 14px 14px;background:linear-gradient(180deg,#E9E8F1 0%,#C9C7D8 70%,#AFADC2 100%);box-shadow:0 14px 22px -14px rgba(28,26,69,.55)}
-.ml-hx__base::before{content:"";position:absolute;top:0;left:50%;width:16%;height:5px;transform:translateX(-50%);border-radius:0 0 6px 6px;background:#B9B7CA}
+.ml-hx__lid{position:relative;padding:6px 6px 7px;border-radius:12px 12px 3px 3px;background:#0B0B0D;box-shadow:inset 0 0 0 1px #3A3A40,inset 0 0 0 2px #0B0B0D,0 26px 46px -28px rgba(17,17,19,.55)}
+.ml-hx__lid::before{content:"";position:absolute;top:6px;left:50%;z-index:3;width:12%;height:11px;transform:translateX(-50%);border-radius:0 0 6px 6px;background:#0B0B0D}
+.ml-hx__stage{position:relative;display:block;aspect-ratio:16 / 10;border-radius:6px 6px 0 0;overflow:hidden;background:#fff;touch-action:pan-y}
+.ml-hx__base{position:relative;display:block;width:106%;height:8px;margin-left:-3%;border-radius:1px 1px 9px 9px;background:linear-gradient(180deg,#5E5E66 0%,#5E5E66 18%,#E6E6EC 22%,#D3D3DB 60%,#A9A9B4 100%);box-shadow:0 10px 18px -10px rgba(17,17,19,.5)}
+.ml-hx__base::before{content:"";position:absolute;top:1px;left:50%;width:13%;height:3px;transform:translateX(-50%);border-radius:0 0 5px 5px;background:linear-gradient(180deg,#A3A3AE,#C4C4CD)}
 /* slide-urile stau unul peste altul și se schimbă cu o trecere lină */
 .ml-hx__slide{position:absolute;inset:0;opacity:0;transition:opacity .7s var(--ml-ease);pointer-events:none}
 .ml-hx__slide.is-on{opacity:1}
-.ml-hx__desk{position:absolute;inset:0;border-radius:0}  /* colțurile le taie ecranul (4 px = 11 px ai ramei − 7 px margine; pe telefon 8 − 4), concentric cu rama */
+.ml-hx__desk{position:absolute;inset:0;border-radius:0}  /* colțurile le taie ecranul (sus rotunjite, ca la MacBook) */
 .ml-hx__mob{position:absolute;right:20px;bottom:20px;width:23%;aspect-ratio:9 / 19.5;border:4px solid var(--ml-card);border-radius:16px;box-shadow:0 20px 40px -20px rgba(17,17,19,.45)}
 /* cu clip: ocupă tot cardul, fără telefonul-machetă (ar acoperi video-ul din pagina clientului) */
 .ml-hx__slide.has-video .ml-hx__mob{display:none}
@@ -679,10 +680,11 @@ a.ml-card{transition:background-color .25s ease}
   .ml-hx__head{padding:12px 12px 14px}
   .ml-hx__device{padding:8px 0 64px}
   .ml-hx__laptop{width:92%}
-  .ml-hx__lid{padding:4px 4px 5px;border-radius:8px 8px 4px 4px}
-  .ml-hx__lid::before{display:none}
-  .ml-hx__base{width:108%;margin-left:-4%;height:9px;border-radius:2px 2px 10px 10px}
-  .ml-hx__base::before{height:3px}
+  .ml-hx__lid{padding:3px 3px 4px;border-radius:8px 8px 2px 2px}
+  .ml-hx__lid::before{top:3px;height:6px;border-radius:0 0 4px 4px}
+  .ml-hx__stage{border-radius:5px 5px 0 0}
+  .ml-hx__base{width:104%;margin-left:-2%;height:6px;border-radius:1px 1px 7px 7px}
+  .ml-hx__base::before{height:2px}
   .ml-hx__mob{right:12px;bottom:12px;border-width:3px;border-radius:12px}
   .ml-hx__dots{bottom:16px}
   .ml-hx__meta{font-size:13px}
