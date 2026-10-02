@@ -105,7 +105,7 @@
 /* slide-urile stau unul peste altul și se schimbă cu o trecere lină */
 .ml-hx__slide{position:absolute;inset:0;opacity:0;transition:opacity .7s var(--ml-ease);pointer-events:none}
 .ml-hx__slide.is-on{opacity:1}
-.ml-hx__desk{position:absolute;inset:0}
+.ml-hx__desk{position:absolute;inset:0;border-radius:0}  /* colțurile le taie ecranul (4 px = 16 px ai ramei − 12 px margine), concentric cu rama */
 .ml-hx__mob{position:absolute;right:20px;bottom:20px;width:23%;aspect-ratio:9 / 19.5;border:4px solid var(--ml-card);border-radius:16px;box-shadow:0 20px 40px -20px rgba(17,17,19,.45)}
 /* cu clip: ocupă tot cardul, fără telefonul-machetă (ar acoperi video-ul din pagina clientului) */
 .ml-hx__slide.has-video .ml-hx__mob{display:none}
